@@ -74,6 +74,27 @@ namespace Nautilus.Items
             "Should this item corrupt consumed elixirs?",
             true
         );
+        public static ConfigItem<bool> Crabsinthe_Recipe = new ConfigItem<bool>
+        (
+            "Void common: Crabsinthe",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> Crabsinthe_Ingredient1 = new ConfigItem<string>
+        (
+            "Void common: Crabsinthe",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "HealingPotion"
+        );
+        public static ConfigItem<string> Crabsinthe_Ingredient2 = new ConfigItem<string>
+        (
+            "Void common: Crabsinthe",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "MushroomVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -136,6 +157,19 @@ namespace Nautilus.Items
                     self.regenMultAdd += Crabsinthe_Regen.Value + (Crabsinthe_RegenStack.Value * (itemCount - 1));
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (Crabsinthe_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    Crabsinthe_Ingredient1.Value,
+                    Crabsinthe_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 }

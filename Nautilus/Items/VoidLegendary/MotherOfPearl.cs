@@ -88,6 +88,27 @@ namespace Nautilus.Items
             1f,
             0.01f
         );
+        public static ConfigItem<bool> MotherOfPearl_Recipe = new ConfigItem<bool>
+        (
+            "Void legendary: Mother Of Pearl",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> MotherOfPearl_Ingredient1 = new ConfigItem<string>
+        (
+            "Void legendary: Mother Of Pearl",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "BarrageOnBoss"
+        );
+        public static ConfigItem<string> MotherOfPearl_Ingredient2 = new ConfigItem<string>
+        (
+            "Void legendary: Mother Of Pearl",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "MissileVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -170,6 +191,19 @@ namespace Nautilus.Items
 
                 orig(self, other);
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (MotherOfPearl_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    MotherOfPearl_Ingredient1.Value,
+                    MotherOfPearl_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 

@@ -66,6 +66,27 @@ namespace Nautilus.Items
             1f,
             0.05f
         );
+        public static ConfigItem<bool> Xenobacteria_Recipe = new ConfigItem<bool>
+        (
+            "Void legendary: Xenobacteria",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> Xenobacteria_Ingredient1 = new ConfigItem<string>
+        (
+            "Void legendary: Xenobacteria",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "AlienHead"
+        );
+        public static ConfigItem<string> Xenobacteria_Ingredient2 = new ConfigItem<string>
+        (
+            "Void legendary: Xenobacteria",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "SlowOnHitVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -116,6 +137,19 @@ namespace Nautilus.Items
                     }
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (Xenobacteria_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    Xenobacteria_Ingredient1.Value,
+                    Xenobacteria_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public int GetBacteriasInTeam(TeamIndex teamIndex)

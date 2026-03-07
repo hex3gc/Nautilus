@@ -156,6 +156,27 @@ namespace Nautilus.Items
             80f,
             1f
         );
+        public static ConfigItem<bool> MobiusNode_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Mobius Node",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> MobiusNode_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Mobius Node",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "NovaOnLowHealth"
+        );
+        public static ConfigItem<string> MobiusNode_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Mobius Node",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "MissileVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -272,6 +293,19 @@ namespace Nautilus.Items
                     self.SetBuffCount(MobiusBuff.buffIndex, 0);
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (MobiusNode_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    MobiusNode_Ingredient1.Value,
+                    MobiusNode_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateMobiusBuff()

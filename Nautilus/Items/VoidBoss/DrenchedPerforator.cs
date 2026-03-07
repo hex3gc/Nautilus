@@ -163,6 +163,34 @@ namespace Nautilus.Items
             1f,
             0.05f
         );
+        public static ConfigItem<bool> DrenchedPerforator_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Drenched Perforator",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> DrenchedPerforator_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Drenched Perforator",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "FireballsOnHit"
+        );
+        public static ConfigItem<string> DrenchedPerforator_Ingredient1Alt = new ConfigItem<string>
+        (
+            "Void boss: Drenched Perforator",
+            "Recipe ingredient 1 (alt)",
+            "First ingredient for corruption recipe (alt)",
+            "LightningStrikeOnHit"
+        );
+        public static ConfigItem<string> DrenchedPerforator_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Drenched Perforator",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "HydraTooth"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -244,6 +272,26 @@ namespace Nautilus.Items
                     }
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (DrenchedPerforator_Recipe.Value == true && ItemInit.HydraTooth.Enabled)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    DrenchedPerforator_Ingredient1.Value,
+                    DrenchedPerforator_Ingredient2.Value,
+                    ItemDef.name
+                );
+
+                ItemInit.MakeCorruptionRecipe
+                (
+                    DrenchedPerforator_Ingredient1Alt.Value,
+                    DrenchedPerforator_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateExplosion(CharacterBody attackerBody, Vector3 position, float radius, float extraRadius, DamageInfo origDamageInfo)

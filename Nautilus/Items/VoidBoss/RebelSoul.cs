@@ -189,6 +189,27 @@ namespace Nautilus.Items
             0.01f
         );
         */
+        public static ConfigItem<bool> RebelSoul_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Rebel Soul",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> RebelSoul_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Rebel Soul",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "SprintWisp"
+        );
+        public static ConfigItem<string> RebelSoul_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Rebel Soul",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ExplodeOnDeathVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -257,6 +278,19 @@ namespace Nautilus.Items
                     UnityEngine.Object.Destroy(self.gameObject.GetComponent<RebelSoulBehavior>());
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (RebelSoul_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    RebelSoul_Ingredient1.Value,
+                    RebelSoul_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 

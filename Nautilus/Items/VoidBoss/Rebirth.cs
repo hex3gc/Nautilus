@@ -124,6 +124,27 @@ namespace Nautilus.Items
             6f,
             1f
         );
+        public static ConfigItem<bool> Rebirth_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Rebirth",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> Rebirth_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Rebirth",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "ParentEgg"
+        );
+        public static ConfigItem<string> Rebirth_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Rebirth",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "PaleStar"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -212,6 +233,20 @@ namespace Nautilus.Items
                 }
             };
         }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (Rebirth_Recipe.Value == true && ItemInit.PaleStar.Enabled)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    Rebirth_Ingredient1.Value,
+                    Rebirth_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
+        }
+
         public void CorruptItems(CharacterMaster characterMaster, int amount)
         {
             Xoroshiro128Plus rng = new Xoroshiro128Plus(Run.instance.stageRng.nextUlong);

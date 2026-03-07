@@ -152,6 +152,27 @@ namespace Nautilus.Items
             4f,
             1f
         );
+        public static ConfigItem<bool> SplitNucleus_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Split Nucleus",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> SplitNucleus_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Split Nucleus",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "MinorConstructOnKill"
+        );
+        public static ConfigItem<string> SplitNucleus_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Split Nucleus",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ChainLightningVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -238,6 +259,19 @@ namespace Nautilus.Items
 
                 orig(self, damageReport);
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (SplitNucleus_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    SplitNucleus_Ingredient1.Value,
+                    SplitNucleus_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateNucleusBuff()

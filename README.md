@@ -5,11 +5,17 @@
 <hr>
 
 ### Void Boss tier
-These powerful versions of boss items can be obtained in various ways, but a boss must first be Voidtouched for its item to become corrupted. To help you find more of them, this mod adds one new interactable:
+These powerful versions of boss items can be obtained in various ways, either by collecting a Voidtouched boss's trophy, corrupting your existing boss items, or by using a new shrine:
 
 <p align="center" style="font-size: 1.1em;font-weight: 600">Shrine Of The Deep</p>
 <p align="center">Starts spawning at Stage 2. Activating calls out to the void, spawning Voidtouched bosses and elites at the teleporter. In exchange, you receive 1 bonus item drop, and all boss item rewards are converted to their void equivalents.</p>
 <p align="center"><img src="https://github.com/hex3gc/Nautilus/blob/main/Images/shrineOfTheDeep.png?raw=true" width=256></p>
+
+### Corruption recipes
+All void items from vanilla and Nautilus now have corruption recipes that you can use at the Wandering Chef, providing a new way to get specific void items. Requires Alloyed Collective DLC.
+<p align="center"><img src="https://github.com/hex3gc/Nautilus/blob/main/Images/conversion1.png?raw=true" width=320></p>
+<p align="center"><img src="https://github.com/hex3gc/Nautilus/blob/main/Images/conversion2.png?raw=true" width=320></p>
+<p align="center"><img src="https://github.com/hex3gc/Nautilus/blob/main/Images/conversion3.png?raw=true" width=320></p>
 
 ### Items
 The void item pool has been significantly expanded, with new options in all tiers:
@@ -47,12 +53,13 @@ The void item pool has been significantly expanded, with new options in all tier
 - [OldFathomlessVoidling](https://thunderstore.io/package/viliger/OldFathomlessVoidling/) for a better Voidling fight and void locus experience. Also adds a Locus portal to each fifth stage.
 - [CollapseDisplay](https://thunderstore.io/package/Goorakh/CollapseDisplay/) so collapse damage is easier to predict, as you'll be encountering it a lot more.
 - [BenthicRebloomed](https://thunderstore.io/package/braquen/Benthic_Rebloomed/) for a less lunar-like experience while using Benthic Bloom, to put it on par with other Void Legendary items in terms of balance.
+- [ChefBazaar](https://thunderstore.io/package/acanthic/ChefBazaar/) for more opportunities to use the new crafting recipes.
 
 ### Feedback
 If you have questions about the mod, bugs to report or balance/technical suggestions, find me in the [RoR2 Modding Discord](https://discord.com/invite/5MbXZvd).
 
 ### Special thanks
 - kking117 for allowing use of [ZoeaRework](https://thunderstore.io/package/kking117/ZoeaRework/)
-- JunJun5406 for making a Chinese translation -- sorry, I added a bunch of language entries right after!
+- JunJun5406 for making a Chinese translation
 - prodzpod for maintaining [Hex3Mod](https://thunderstore.io/package/prodzpod/RealerHex3Mod/) in my absence
 - All the users in the modding discord for the huge backlog of advice to search thru

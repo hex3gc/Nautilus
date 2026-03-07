@@ -95,6 +95,27 @@ namespace Nautilus.Items
             5f,
             0.1f
         );
+        public static ConfigItem<bool> AlteredSoul_Recipe = new ConfigItem<bool>
+        (
+            "Void legendary: Altered Soul",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> AlteredSoul_Ingredient1 = new ConfigItem<string>
+        (
+            "Void legendary: Altered Soul",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "Dagger"
+        );
+        public static ConfigItem<string> AlteredSoul_Ingredient2 = new ConfigItem<string>
+        (
+            "Void legendary: Altered Soul",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ElementalRingVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -204,6 +225,19 @@ namespace Nautilus.Items
 
                 orig(self, damageReport);
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (AlteredSoul_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    AlteredSoul_Ingredient1.Value,
+                    AlteredSoul_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public class AlteredSoulBehavior : MonoBehaviour

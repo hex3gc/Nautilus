@@ -116,6 +116,27 @@ namespace Nautilus.Items
             60f,
             1f
         );
+        public static ConfigItem<bool> HydraTooth_Recipe = new ConfigItem<bool>
+        (
+            "Void uncommon: Tooth Of Hydra",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> HydraTooth_Ingredient1 = new ConfigItem<string>
+        (
+            "Void uncommon: Tooth Of Hydra",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "TriggerEnemyDebuffs"
+        );
+        public static ConfigItem<string> HydraTooth_Ingredient2 = new ConfigItem<string>
+        (
+            "Void uncommon: Tooth Of Hydra",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "BleedOnHitVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -237,6 +258,18 @@ namespace Nautilus.Items
                     }
                 }
             };
+        }
+        public override void AddCorruptionRecipe()
+        {
+            if (HydraTooth_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    HydraTooth_Ingredient1.Value,
+                    HydraTooth_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public int GetToothsInTeam(TeamIndex teamIndex)

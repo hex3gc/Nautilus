@@ -86,6 +86,27 @@ namespace Nautilus.Items
             2f,
             0.1f
         );
+        public static ConfigItem<bool> SkullSprout_Recipe = new ConfigItem<bool>
+        (
+            "Void legendary: Skullsprout",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> SkullSprout_Ingredient1 = new ConfigItem<string>
+        (
+            "Void legendary: Skullsprout",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "KillEliteFrenzy"
+        );
+        public static ConfigItem<string> SkullSprout_Ingredient2 = new ConfigItem<string>
+        (
+            "Void legendary: Skullsprout",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "HydraTooth"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -224,6 +245,19 @@ namespace Nautilus.Items
 
                 orig(ref self);
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (SkullSprout_Recipe.Value == true && ItemInit.HydraTooth.Enabled)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    SkullSprout_Ingredient1.Value,
+                    SkullSprout_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 }

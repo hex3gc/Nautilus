@@ -164,6 +164,27 @@ namespace Nautilus.Items
             26f,
             1f
         );
+        public static ConfigItem<bool> EffigyOfRot_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Effigy Of Rot",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> EffigyOfRot_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Effigy Of Rot",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "SiphonOnLowHealth"
+        );
+        public static ConfigItem<string> EffigyOfRot_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Effigy Of Rot",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ViscousPot"
+        );
         public static ConfigItem<bool> EffigyOfRot_CorruptsAllMiredUrns = new ConfigItem<bool>
         (
             "Void boss: Effigy Of Rot",
@@ -297,6 +318,19 @@ namespace Nautilus.Items
                     }
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (EffigyOfRot_Recipe.Value == true && ItemInit.ViscousPot.Enabled)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    EffigyOfRot_Ingredient1.Value,
+                    EffigyOfRot_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public class PoisonDoNotTransferBehavior : MonoBehaviour

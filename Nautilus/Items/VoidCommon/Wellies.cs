@@ -95,6 +95,27 @@ namespace Nautilus.Items
             12f,
             0.5f
         );
+        public static ConfigItem<bool> Wellies_Recipe = new ConfigItem<bool>
+        (
+            "Void common: Waterlogged Wellies",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> Wellies_Ingredient1 = new ConfigItem<string>
+        (
+            "Void common: Waterlogged Wellies",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "CritAtLowerElevation"
+        );
+        public static ConfigItem<string> Wellies_Ingredient2 = new ConfigItem<string>
+        (
+            "Void common: Waterlogged Wellies",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "CritGlassesVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -182,6 +203,19 @@ namespace Nautilus.Items
 
                 orig(self, damageInfo);   
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (Wellies_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    Wellies_Ingredient1.Value,
+                    Wellies_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 }

@@ -141,6 +141,27 @@ namespace Nautilus.Items
             1f,
             0.05f
         );
+        public static ConfigItem<bool> OsmiumShackles_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Osmium Shackles",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> OsmiumShackles_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Osmium Shackles",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "Knurl"
+        );
+        public static ConfigItem<string> OsmiumShackles_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Osmium Shackles",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ElementalRingVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -239,6 +260,19 @@ namespace Nautilus.Items
                     self.RecalculateStats();
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (OsmiumShackles_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    OsmiumShackles_Ingredient1.Value,
+                    OsmiumShackles_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateOsmiumBuff()

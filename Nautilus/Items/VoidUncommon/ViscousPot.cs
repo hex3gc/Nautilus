@@ -153,6 +153,27 @@ namespace Nautilus.Items
             1f,
             0.05f
         );
+        public static ConfigItem<bool> ViscousPot_Recipe = new ConfigItem<bool>
+        (
+            "Void uncommon: Viscous Pot",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> ViscousPot_Ingredient1 = new ConfigItem<string>
+        (
+            "Void uncommon: Viscous Pot",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "IncreasePrimaryDamage"
+        );
+        public static ConfigItem<string> ViscousPot_Ingredient2 = new ConfigItem<string>
+        (
+            "Void uncommon: Viscous Pot",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "Wellies"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -228,6 +249,18 @@ namespace Nautilus.Items
                     FireOrbs(self, itemCount);
                 }
             };
+        }
+        public override void AddCorruptionRecipe()
+        {
+            if (ViscousPot_Recipe.Value == true && ItemInit.Wellies.Enabled)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    ViscousPot_Ingredient1.Value,
+                    ViscousPot_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void FireOrbs(CharacterBody body, int itemCount)

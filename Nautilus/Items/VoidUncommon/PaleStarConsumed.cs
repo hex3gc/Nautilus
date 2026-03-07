@@ -53,5 +53,10 @@ namespace Nautilus.Items
 
             Log.Info(String.Format("Added void conversion from {0} to {1}", ConversionItemDefConsumed.name, ItemDef.name));
         }
+
+        public override void AddCorruptionRecipe()
+        {
+            
+        }
     }
 }

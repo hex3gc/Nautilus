@@ -96,6 +96,27 @@ namespace Nautilus.Items
             3f,
             0.1f
         );
+        public static ConfigItem<bool> ShimmeringNautilus_Recipe = new ConfigItem<bool>
+        (
+            "Void legendary: Shimmering Nautilus",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> ShimmeringNautilus_Ingredient1 = new ConfigItem<string>
+        (
+            "Void legendary: Shimmering Nautilus",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "ArmorReductionOnHit"
+        );
+        public static ConfigItem<string> ShimmeringNautilus_Ingredient2 = new ConfigItem<string>
+        (
+            "Void legendary: Shimmering Nautilus",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "ExplodeOnDeathVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -185,6 +206,19 @@ namespace Nautilus.Items
 
                 orig(self, damageInfo);
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (ShimmeringNautilus_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    ShimmeringNautilus_Ingredient1.Value,
+                    ShimmeringNautilus_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateNautilusBuff()

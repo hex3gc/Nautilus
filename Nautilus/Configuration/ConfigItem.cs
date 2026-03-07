@@ -3,13 +3,41 @@ using BepInEx.Configuration;
 using RiskOfOptions;
 using RiskOfOptions.Options;
 using RiskOfOptions.OptionConfigs;
+using System.Collections.Generic;
 
 namespace Nautilus.Configuration
 {
     /// <summary>
     ///     Initializes a config entry and makes its value available
     /// </summary>
-    public class ConfigItem<T>
+    public abstract class ConfigItem
+    {
+        private static List<ConfigItem> _configList;
+        public static List<ConfigItem> ConfigList
+        {
+            get
+            {
+                if (_configList == null)
+                {
+                    _configList = new List<ConfigItem>();
+                }
+                return _configList;
+            }
+            set
+            {
+                _configList = value;
+            }
+        }
+        public abstract void InitConfigItem();
+        public static void Init()
+        {
+            foreach (ConfigItem cfg in ConfigList)
+            {
+                cfg.InitConfigItem();
+            }
+        }
+    }
+    public class ConfigItem<T> : ConfigItem
     {
         public T Value
         {
@@ -51,10 +79,10 @@ namespace Nautilus.Configuration
             maxValue = _maxValue;
             increment = _increment;
 
-            InitConfigItem();
+            ConfigList.Add(this);
         }
 
-        public void InitConfigItem()
+        public override void InitConfigItem()
         {
             configEntry = Main.Instance.Config.Bind(new ConfigDefinition(header, name), defaultValue, new ConfigDescription(desc));
 

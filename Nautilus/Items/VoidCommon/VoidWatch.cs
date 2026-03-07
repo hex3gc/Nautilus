@@ -127,6 +127,27 @@ namespace Nautilus.Items
             24f,
             1f
         );
+        public static ConfigItem<bool> VoidWatch_Recipe = new ConfigItem<bool>
+        (
+            "Void common: Collectors Appraisal",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> VoidWatch_Ingredient1 = new ConfigItem<string>
+        (
+            "Void common: Collectors Appraisal",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "HealingPotion"
+        );
+        public static ConfigItem<string> VoidWatch_Ingredient2 = new ConfigItem<string>
+        (
+            "Void common: Collectors Appraisal",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "MushroomVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -214,6 +235,19 @@ namespace Nautilus.Items
                     UnityEngine.Object.Destroy(self.GetComponent<VoidWatchBehavior>());
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (VoidWatch_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    VoidWatch_Ingredient1.Value,
+                    VoidWatch_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateVoidWatchBuff()

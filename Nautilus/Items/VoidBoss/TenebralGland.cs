@@ -128,6 +128,27 @@ namespace Nautilus.Items
             30f,
             1f
         );
+        public static ConfigItem<bool> TenebralGland_Recipe = new ConfigItem<bool>
+        (
+            "Void boss: Tenebral Gland",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> TenebralGland_Ingredient1 = new ConfigItem<string>
+        (
+            "Void boss: Tenebral Gland",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "BleedOnHitAndExplode"
+        );
+        public static ConfigItem<string> TenebralGland_Ingredient2 = new ConfigItem<string>
+        (
+            "Void boss: Tenebral Gland",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "EquipmentMagazineVoid"
+        );
 
 
         public GameObject OverwritePrefabMaterials()
@@ -255,6 +276,19 @@ namespace Nautilus.Items
                     self.critDamageMultAdd += TenebralGland_CritDamageBuff.Value * buffCount;
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (TenebralGland_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    TenebralGland_Ingredient1.Value,
+                    TenebralGland_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
 
         public void CreateTenebralBuff()

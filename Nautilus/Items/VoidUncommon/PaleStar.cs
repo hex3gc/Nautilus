@@ -82,6 +82,27 @@ namespace Nautilus.Items
             3f,
             1f
         );
+        public static ConfigItem<bool> PaleStar_Recipe = new ConfigItem<bool>
+        (
+            "Void uncommon: Pale Star",
+            "Recipe enabled",
+            "Should this item have a custom corruption recipe?",
+            true
+        );
+        public static ConfigItem<string> PaleStar_Ingredient1 = new ConfigItem<string>
+        (
+            "Void uncommon: Pale Star",
+            "Recipe ingredient 1",
+            "First ingredient for corruption recipe",
+            "LowerPricedChests"
+        );
+        public static ConfigItem<string> PaleStar_Ingredient2 = new ConfigItem<string>
+        (
+            "Void uncommon: Pale Star",
+            "Recipe ingredient 2",
+            "Second ingredient for corruption recipe",
+            "TreasureCacheVoid"
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -274,6 +295,19 @@ namespace Nautilus.Items
                     orig(self, interactor, interactable, interactableObject);
                 }
             };
+        }
+
+        public override void AddCorruptionRecipe()
+        {
+            if (PaleStar_Recipe.Value == true)
+            {
+                ItemInit.MakeCorruptionRecipe
+                (
+                    PaleStar_Ingredient1.Value,
+                    PaleStar_Ingredient2.Value,
+                    ItemDef.name
+                );
+            }
         }
     }
 }

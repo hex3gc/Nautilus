@@ -134,6 +134,7 @@ namespace Nautilus.Items
         }
         public abstract void FormatDescriptionTokens();
         public abstract void RegisterHooks();
+        public abstract void AddCorruptionRecipe();
         // TODO pickups
     }
 }

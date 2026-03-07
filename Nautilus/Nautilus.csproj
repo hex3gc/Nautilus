@@ -28,7 +28,7 @@
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" IncludeAssets="compile" />
 		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
 		<PackageReference Include="MMHOOK.RoR2" Version="*" NoWarn="NU1701" />
-		<PackageReference Include="RoR2BepInExPack" Version="*" />
+		<PackageReference Include="RoR2BepInExPack" Version="1.43.0" />
 
 		<Reference Include="RiskOfOptions">
 			<HintPath>Nautilus/libs/RiskOfOptions.dll</HintPath>
