@@ -23,6 +23,9 @@ namespace Nautilus.Interactables
 
     public class ShrineOfTheDeep : InteractableBase
     {
+        public ShrineOfTheDeep() : 
+        base(){ }
+
         public static ConfigItem<bool> ShrineOfTheDeep_Enabled = new ConfigItem<bool>
         (
             "Interactable: Shrine of the Deep",
@@ -45,7 +48,7 @@ namespace Nautilus.Interactables
             "Interactable: Shrine of the Deep",
             "Director weight",
             "Weight of this interactable against other spawns (2 = boss printer weight)",
-            3,
+            4,
             1f,
             15f,
             1f
@@ -55,7 +58,7 @@ namespace Nautilus.Interactables
             "Interactable: Shrine of the Deep",
             "Additional stages to spawn",
             "(Separate by commas!) The interactable already has spawn definitions for vanilla stages, but you can define extra modded stages here by using their internal names.",
-            ""
+            "observatory_wormsworms, hollowsummit_wormsworms, hollowsummitnight_wormsworms, foggyswampdownpour"
         );
         public static ConfigItem<bool> ShrineOfTheDeep_ZoeaRework = new ConfigItem<bool>
         (

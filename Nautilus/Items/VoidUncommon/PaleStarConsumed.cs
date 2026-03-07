@@ -54,9 +54,17 @@ namespace Nautilus.Items
             Log.Info(String.Format("Added void conversion from {0} to {1}", ConversionItemDefConsumed.name, ItemDef.name));
         }
 
+        // Recipe
         public override void AddCorruptionRecipe()
         {
             
+        }
+
+        // IDR
+        public override ItemDisplayRuleDict AddItemDisplays()
+        {
+            ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
+            return rules;
         }
     }
 }

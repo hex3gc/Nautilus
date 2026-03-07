@@ -33,7 +33,7 @@ namespace Nautilus
     {
         public const string NAUTILUS_GUID = "com.Hex3.Nautilus";
         public const string NAUTILUS_NAME = "Nautilus";
-        public const string NAUTILUS_VER = "1.2.8";
+        public const string NAUTILUS_VER = "1.2.9";
         public static Main Instance;
         public static ExpansionDef Expansion;
         public static AssetBundle Assets;
@@ -54,6 +54,8 @@ namespace Nautilus
                 Assets = AssetBundle.LoadFromStream(stream);
             }
             // base.StartCoroutine(Assets.UpgradeStubbedShadersAsync());
+
+            InteractableInit.shrineOfTheDeep = InteractableInit.shrineOfTheDeep; // I am going genuinely fucking mental
 
             Log.Info($"Creating config...");
             Config_Enabled = Instance.Config.Bind(new ConfigDefinition("CONFIG - IMPORTANT", "Enable custom config"), false, new ConfigDescription("Set to 'true' to enable custom configuration for this mod. False by default to allow balance changes to take effect.", null, Array.Empty<object>()));

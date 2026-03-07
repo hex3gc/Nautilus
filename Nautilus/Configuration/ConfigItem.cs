@@ -37,6 +37,7 @@ namespace Nautilus.Configuration
             }
         }
     }
+
     public class ConfigItem<T> : ConfigItem
     {
         public T Value
@@ -84,6 +85,8 @@ namespace Nautilus.Configuration
 
         public override void InitConfigItem()
         {
+            Log.Info("CONFIG init " + header + " " + name);
+
             configEntry = Main.Instance.Config.Bind(new ConfigDefinition(header, name), defaultValue, new ConfigDescription(desc));
 
             if (this.Type == typeof(bool))

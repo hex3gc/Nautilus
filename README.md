@@ -54,6 +54,7 @@ The void item pool has been significantly expanded, with new options in all tier
 - [CollapseDisplay](https://thunderstore.io/package/Goorakh/CollapseDisplay/) so collapse damage is easier to predict, as you'll be encountering it a lot more.
 - [BenthicRebloomed](https://thunderstore.io/package/braquen/Benthic_Rebloomed/) for a less lunar-like experience while using Benthic Bloom, to put it on par with other Void Legendary items in terms of balance.
 - [ChefBazaar](https://thunderstore.io/package/acanthic/ChefBazaar/) for more opportunities to use the new crafting recipes.
+- [WolfoQualityOfLife](https://thunderstore.io/package/Wolfo/WolfoQualityOfLife/) to show crafting recipes in the logbook.
 
 ### Feedback
 If you have questions about the mod, bugs to report or balance/technical suggestions, find me in the [RoR2 Modding Discord](https://discord.com/invite/5MbXZvd).

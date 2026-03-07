@@ -93,7 +93,7 @@ namespace Nautilus.Items
                 modelPanelParameters.cameraPositionTransform = child;
             }
 
-            ItemAPI.Add(new CustomItem(ItemDef, []));
+            ItemAPI.Add(new CustomItem(ItemDef, AddItemDisplays()));
 
             if (ConversionItemDef)
             {
@@ -135,6 +135,6 @@ namespace Nautilus.Items
         public abstract void FormatDescriptionTokens();
         public abstract void RegisterHooks();
         public abstract void AddCorruptionRecipe();
-        // TODO pickups
+        public abstract ItemDisplayRuleDict AddItemDisplays();
     }
 }
