@@ -81,7 +81,7 @@ namespace Nautilus.Items
             }
             set;
         }
-        public static ModdedProcType DrenchedPerforatorProcType;
+        public static ModdedProcType DrenchedPerforatorProcType = ProcTypeAPI.ReserveProcType();
 
         public DrenchedPerforator(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = false, bool _hidden = false) : 
         base(_name, _tags, _tier, _canRemove, _isConsumed, _hidden){}
