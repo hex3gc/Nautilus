@@ -27,13 +27,14 @@ namespace Nautilus
     [BepInDependency("com.bepis.r2api.recalculatestats", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.prefab", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.director", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.proctype", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class Main : BaseUnityPlugin
     {
         public const string NAUTILUS_GUID = "com.Hex3.Nautilus";
         public const string NAUTILUS_NAME = "Nautilus";
-        public const string NAUTILUS_VER = "1.2.9";
+        public const string NAUTILUS_VER = "1.2.10";
         public static Main Instance;
         public static ExpansionDef Expansion;
         public static AssetBundle Assets;
@@ -55,7 +56,7 @@ namespace Nautilus
             }
             // base.StartCoroutine(Assets.UpgradeStubbedShadersAsync());
 
-            InteractableInit.shrineOfTheDeep = InteractableInit.shrineOfTheDeep; // I am going genuinely fucking mental
+            InteractableInit.shrineOfTheDeep = InteractableInit.shrineOfTheDeep;
 
             Log.Info($"Creating config...");
             Config_Enabled = Instance.Config.Bind(new ConfigDefinition("CONFIG - IMPORTANT", "Enable custom config"), false, new ConfigDescription("Set to 'true' to enable custom configuration for this mod. False by default to allow balance changes to take effect.", null, Array.Empty<object>()));

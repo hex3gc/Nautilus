@@ -281,8 +281,8 @@ namespace Nautilus.Items
             GameObject ItemDisplayPrefab = Helpers.PrepareItemDisplayModel(PrefabAPI.InstantiateClone(itemPrefab, ItemDef.name + "Display", false));
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
 
-            #region IDR
             /*
+            #region IDR
             rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
@@ -463,8 +463,8 @@ namespace Nautilus.Items
                     }
                 }
             );
-            */
             #endregion
+            */
 
             return rules;
         }

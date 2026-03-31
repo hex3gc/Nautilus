@@ -81,6 +81,7 @@ namespace Nautilus.Items
             }
             set;
         }
+        public static ModdedProcType DrenchedPerforatorProcType;
 
         public DrenchedPerforator(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = false, bool _hidden = false) : 
         base(_name, _tags, _tier, _canRemove, _isConsumed, _hidden){}
@@ -245,7 +246,7 @@ namespace Nautilus.Items
             {
                 orig(self, damageInfo, victimObject);
 
-                if (!damageInfo.procChainMask.HasProc(ProcType.FractureOnHit) && !damageInfo.rejected && damageInfo.procCoefficient > 0f && damageInfo.damage > 0f && damageInfo.attacker && damageInfo.attacker.TryGetComponent(out CharacterBody attackerBody) && attackerBody.master && victimObject.TryGetComponent(out CharacterBody victimBody) && victimBody.healthComponent)
+                if (!damageInfo.procChainMask.HasProc(ProcType.FractureOnHit) && !ProcTypeAPI.HasModdedProc(damageInfo.procChainMask, DrenchedPerforatorProcType) && !damageInfo.rejected && damageInfo.procCoefficient > 0f && damageInfo.damage > 0f && damageInfo.attacker && damageInfo.attacker.TryGetComponent(out CharacterBody attackerBody) && attackerBody.master && victimObject.TryGetComponent(out CharacterBody victimBody) && victimBody.healthComponent)
                 {
                     int itemCount = GetItemCountEffective(attackerBody);
                     
@@ -301,8 +302,8 @@ namespace Nautilus.Items
             GameObject ItemDisplayPrefab = Helpers.PrepareItemDisplayModel(PrefabAPI.InstantiateClone(itemPrefab, ItemDef.name + "Display", false));
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
 
-            #region IDR
             /*
+            #region IDR
             rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
@@ -483,8 +484,8 @@ namespace Nautilus.Items
                     }
                 }
             );
-            */
             #endregion
+            */
 
             return rules;
         }
@@ -510,6 +511,8 @@ namespace Nautilus.Items
                     }
                 }
             }
+
+            origDamageInfo.procChainMask.AddModdedProc(DrenchedPerforatorProcType);
 
             BlastAttack blastAttack = new BlastAttack
             {
