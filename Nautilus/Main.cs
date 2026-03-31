@@ -34,7 +34,7 @@ namespace Nautilus
     {
         public const string NAUTILUS_GUID = "com.Hex3.Nautilus";
         public const string NAUTILUS_NAME = "Nautilus";
-        public const string NAUTILUS_VER = "1.2.10";
+        public const string NAUTILUS_VER = "1.2.11";
         public static Main Instance;
         public static ExpansionDef Expansion;
         public static AssetBundle Assets;
