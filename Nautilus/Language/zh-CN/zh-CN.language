@@ -3,6 +3,11 @@
         "NT_EXPANSION_NAME": "鹦鹉螺",
         "NT_EXPANSION_DESC": "将《鹦鹉螺》扩展包中的内容添加到游戏中。",
 
+        "NT_INTERACTABLE_SHRINEOFTHEDEEP_NAME": "深渊神龛",
+        "NT_INTERACTABLE_SHRINEOFTHEDEEP_CONTEXT": "<style=cIsVoid>挑战虚空</style>",
+        "NT_INTERACTABLE_SHRINEOFTHEDEEP_DESCRIPTION": "互动以<style=cIsVoid>挑战虚空</style>，提升传送器首领难度并生成<style=cIsVoid>虚空侵染</style>敌人。作为交换，所有掉落的<style=cShrine>首领物品</style>将转化为<style=cIsVoid>虚空首领物品</style>。",
+        "NT_INTERACTABLE_SHRINEOFTHEDEEP_MESSAGE": "<style=cIsVoid>你向虚空发出呼唤...</style>",
+
         "NT_ITEM_WELLIES_NAME": "浸水手套靴",
         "NT_ITEM_WELLIES_PICKUP": "命中时削弱空中敌人并将其拽至地面。<style=cIsVoid>腐化所有登山靴。</style>",
         "NT_ITEM_WELLIES_DESC": "命中空中敌人会将其向下拖拽<style=cStack>（每层提升拖拽力度）</style>，并使其陷入<style=cIsDamage>虚弱</style>状态<style=cIsDamage>{0}</style>秒<style=cStack>（每层+{1}秒）</style>，<style=cIsDamage>降低其30点护甲，同时减少40%移动速度与伤害。</style><style=cIsVoid>腐化所有登山靴。</style>",
@@ -35,7 +40,7 @@
 
         "NT_ITEM_HYDRATOOTH_NAME": "海德拉之牙",
         "NT_ITEM_HYDRATOOTH_PICKUP": "坍缩效果变为传染性，并附带虚弱效果。<style=cIsVoid>腐化所有剧毒荆棘。</style>",
-        "NT_ITEM_HYDRATOOTH_DESC": "攻击时有<style=cIsDamage>{0}%</style>几率触发<style=cIsDamage>坍缩</style>，坍缩造成伤害时，有<style=cIsDamage>{1}%</style><style=cStack>（每层+{2}%）</style>几率使<style=cIsDamage>5米范围内的另一名敌人陷入坍缩</style>。<style=cIsDamage>受坍缩影响的敌人护甲降低{3}点，移动速度降低{4}%。</style><style=cIsVoid>腐化所有剧毒荆棘。</style>",
+        "NT_ITEM_HYDRATOOTH_DESC": "获得<style=cIsDamage>{0}%</style><style=cStack>(每层叠加+{1}%)</style>几率在命中时施加<style=cIsDamage>坍缩</style>，该效果在造成伤害时，有<style=cIsDamage>{2}%</style>几率<style=cIsDamage>使{3}米内的另一名敌人触发坍缩</style>。<style=cIsDamage>受到坍缩影响的敌人护甲降低{4}<style=cStack>(每层叠加-{5})</style>，移动速度降低{6}%。</style></style><style=cIsVoid>腐化所有剧毒荆棘。</style>",
         "NT_ITEM_HYDRATOOTH_LORE": "<style=cStack><UES曙光号回收计划></style> \n<style=cStack><UES内部消息记录></style> \n<style=cStack><回收地点：无></style> \n<style=cStack><附注：2058/11/03></style> \n\n<style=cStack>jadesly123 = 杰德·S（UES平安远航号，科研团队学徒）</style> \n<style=cStack>Mira Li = 米拉·L（UES平安远航号，科研团队主管）</style> \n\n<style=cStack><转录开始></style> \n\njadesly123 <style=cStack>(2058/11/03 11:56)</style>：干饭不？ \n\njadesly123 <style=cStack>(2058/11/03 17:01)</style>：我找到罐装样本了，已经送回实验室，现在放在全闪烁密封容器里（按你建议用了磁能矿），为之前造成的麻烦说声抱歉！！ \n\njadesly123 <style=cStack>(2058/11/03 21:10)</style>：对了，我能申请几个加班工时不？我最近一直在研究这块怀表的走时规律，看似随机但指针的转动好像有模式。想看看不？ \n\nMira Li <style=cStack>(2058/11/03 21:32)</style>：[已读] \n\njadesly123 <style=cStack>(2058/11/03 21:58)</style>：抱歉是不是忙了？我晚点再发～对了海德拉是真的存在吗？还是哈维在开玩笑？他说你肯定知道 \n\nMira Li <style=cStack>(2058/11/04 01:20)</style>：[已读] \n\n<style=cStack><转录结束></style>",
 
         "NT_ITEM_SHIMMERINGNAUTILUS_NAME": "流光鹦鹉螺",
@@ -61,6 +66,46 @@
         "NT_ITEM_SKULLSPROUT_NAME": "颅生芽",
         "NT_ITEM_SKULLSPROUT_PICKUP": "坍缩会随机影响敌人，并降低你的技能冷却。<style=cIsVoid>腐化所有脑部跟踪。</style>",
         "NT_ITEM_SKULLSPROUT_DESC": "攻击时有<style=cIsDamage>{0}%</style>几率触发<style=cIsDamage>坍缩</style>。<style=cIsVoid>所有坍缩效果触发时，会随机转移至{1}米范围内的另一名敌人身上。</style>当坍缩对敌人造成伤害时，<style=cisUtility>所有技能冷却时间减少{2}秒</style><style=cStack>（每层+{3}秒）</style>。<style=cIsVoid>腐化所有脑部跟踪。</style>",
-        "NT_ITEM_SKULLSPROUT_LORE": "<style=cStack><UES曙光号回收计划></style> \n<style=cStack><实体样本></style> \n<style=cStack><回收地点：阵亡的UES突击队员></style> \n<style=cStack><附注：无></style> \n\n<style=cStack>分析总结：米拉·L </style> \n\n<style=cStack><转录开始></style> \n\n对这颗颅骨的物质年代检测得出了一个看似不可能的结果：这名突击队员在虚空中度过了至少五千年。在这漫长的岁月里，他活了多久？\n\n颅骨上伸出数根茎须，属于一种生长在颅内的寄生植物，其基部的芽体中仍残留着灰质痕迹。大脑很可能是它的养分来源。\n\n这些茎须会附着在感知到的任何有机物质上，却只朝着大脑组织生长。它们最偏好的入侵角度是眼睛与鼻腔。它们以智慧为食，对甲虫幼虫几乎视而不见。\n\n他死前经历了什么？他的意识是与这株芽体共生，还是早已独自消散？\n\n这株芽体无需水分即可存活，但离开颅骨后便会逐渐干枯。它或许是依靠微量的大脑组织维持生命。但这点物质显然不足以支撑其存活，更别说延续五千年。\n\n在那五千年里，他活了多久？\n\n<style=cStack><转录结束></style>"
+        "NT_ITEM_SKULLSPROUT_LORE": "<style=cStack><UES曙光号回收计划></style> \n<style=cStack><实体样本></style> \n<style=cStack><回收地点：阵亡的UES突击队员></style> \n<style=cStack><附注：无></style> \n\n<style=cStack>分析总结：米拉·L </style> \n\n<style=cStack><转录开始></style> \n\n对这颗颅骨的物质年代检测得出了一个看似不可能的结果：这名突击队员在虚空中度过了至少五千年。在这漫长的岁月里，他活了多久？\n\n颅骨上伸出数根茎须，属于一种生长在颅内的寄生植物，其基部的芽体中仍残留着灰质痕迹。大脑很可能是它的养分来源。\n\n这些茎须会附着在感知到的任何有机物质上，却只朝着大脑组织生长。它们最偏好的入侵角度是眼睛与鼻腔。它们以智慧为食，对甲虫幼虫几乎视而不见。\n\n他死前经历了什么？他的意识是与这株芽体共生，还是早已独自消散？\n\n这株芽体无需水分即可存活，但离开颅骨后便会逐渐干枯。它或许是依靠微量的大脑组织维持生命。但这点物质显然不足以支撑其存活，更别说延续五千年。\n\n在那五千年里，他活了多久？\n\n<style=cStack><转录结束></style>",
+
+        "NT_ITEM_DRENCHEDPERFORATOR_NAME": "浸蚀钻机",
+        "NT_ITEM_DRENCHEDPERFORATOR_PICKUP": "高伤害命中会施加叠加的坍缩效果。随机将拾取物转化为金块。<style=cIsVoid>腐化所有熔融钻机与电能钻机。</style>",
+        "NT_ITEM_DRENCHEDPERFORATOR_DESC": "每造成<style=cIsDamage>{0}%攻击伤害</style>时，命中会施加{1}层<style=cStack>(每层叠加+{2})</style>的<style=cIsDamage>坍缩</style>。激活时产生一次<style=cIsVoid>内爆</style>，对半径{4}米内造成<style=cIsDamage>{3}%</style>伤害，<style=cIsDamage>每多施加一层坍缩，半径增加{5}米。</style> <style=cIsVoid>腐化所有</style><style=cShrine>熔融钻机与电能钻机。</style>",
+        "NT_ITEM_DRENCHEDPERFORATOR_LORE": "<style=cStack>< UES 接触之光 回收计划 ></style> \n<style=cStack>< 实体样本 ></style> \n<style=cStack>< 回收自：‘Beta‑1 东北方向 3.4 英里处洞穴，深度约 3 英里’ ></style> \n<style=cStack>< 附言：‘易碎’ ></style> \n\n<style=cStack>预分析摘要：哈维·D.</style> \n\n<style=cStack>< 记录开始 ></style> \n\n我们在这个洞穴里发现的大部分野生生物都已被虚空感染。提醒一下，务必离它们远一点，它们会突然闪现进出视野，但移动距离不会太远。在黑暗中尤其危险。西里尔被其中一只寄生虫咬了，但感染并没有像在野生动物身上那样在他体内扎根。（有待进一步调查）\n\n\n既然这段记录只给科研组看——杰德，你会很高兴看到这个：一颗来自虚空感染的岩浆蠕虫的完整牙齿！塔尔森带回他的牙齿时他们给他办了庆祝派对，那我带回这个，怎么也得给我办个虚空主题紫色派对吧。\n\n初步 RID 扫描与附加记录已附上。\n\n（致米拉：想删就删掉。你最近还好吗？我本来想通过公司链路发消息给你，但我们都知道那上面有监控。我开始担心了。你最近待在办公室的时间越来越长，我们联系不上你，有些人觉得这次任务对你来说压力太大了。）\n\n（感到压力很正常。这次任务非同寻常、开创性十足，而且完全超出了我们的工作职责。我觉得就算给我们一二十年时间，也未必能解释清楚我们发现的一切……别把所有担子都自己扛，好吗？老家会有大把人抢着研究这些样本。）\n\n\n（冰箱里给你留了上次你爱吃的千层面。）\n\n<style=cStack>< 记录结束 ></style>",
+
+        "NT_ITEM_OSMIUMSHACKLES_NAME": "锇制镣铐",
+        "NT_ITEM_OSMIUMSHACKLES_PICKUP": "减速并压制附近敌人，所有来源对其暴击率提升。<style=cIsVoid>腐化所有巨型隆起。</style>",
+        "NT_ITEM_OSMIUMSHACKLES_DESC": "<style=cisUtility>压制</style>半径<style=cisUtility>{0}米</style> <style=cStack>(每层叠加+{1}米)</style>内的敌人，使其移动速度、攻击速度与冷却速度降低<style=cisUtility>{2}%</style>，并使所有来源对其暴击率提升<style=cIsDamage>{3}%</style>。<style=cIsVoid>腐化所有</style><style=cShrine>巨型隆起。</style>",
+        "NT_ITEM_OSMIUMSHACKLES_LORE": "<style=cStack>< UES 接触之光 回收计划 ></style> \n<style=cStack>< 实体样本 ></style> \n<style=cStack>< 回收自：‘UES 平安旅途号 阿尔法‑2 投放区，科研实验室’ ></style> \n<style=cStack>< 附言：‘无’ ></style> \n\n<style=cStack>分析摘要：米拉·L.</style> \n\n<style=cStack>< 记录开始 ></style> \n\n这个实验体对大气的适应程度好得惊人。这些舱室里没有开放空气——只有富氧液体——来访者必须学会“舒适地溺水”。大多数人会遵从本能挣扎、半窒息，但它一醒来就知道该如何呼吸。\n\n实验体被关在舱内，还被一副镣铐进一步固定（“石心”，向量 7a818e0f0f）。从三维视角看，镣铐的环口宽得足以让实验体轻松挣脱，但在高维现实中，它们包裹着它的整个身体，让它动弹不得。实验体的小队刚发现这副镣铐时，它们看起来不过是锈蚀的金属。\n\n实验体已经脱离了此前分析中记录的歇斯底里状态，现在完全拒绝说话或流露情绪。我想看看它在模拟造物里会有什么表现。比如某种[数据丢失]。\n\n它以前话很多，一直都很多。一场[数据丢失]应该能让它重新开口。\n\n我想听它唱歌。\n\n<style=cStack>< 记录结束 ></style>",
+
+        "NT_ITEM_REBIRTH_NAME": "虚空重生",
+        "NT_ITEM_REBIRTH_PICKUP": "虚空腐化你的物品栏并提供生命恢复。<style=cIsVoid>腐化所有浮浪幼体。</style>",
+        "NT_ITEM_REBIRTH_DESC": "拾取时腐化<style=cIsVoid>{0}</style>件物品为对应的<style=cIsVoid>虚空版本</style>，之后每关腐化<style=cIsVoid>{1}</style>件。物品栏中每有一件虚空物品，提供<style=cIsHealing>+{2} 生命/秒</style> <style=cStack>(每层叠加+{3} 生命/秒)</style>被动生命恢复。<style=cIsVoid>腐化所有</style><style=cShrine>浮浪幼体。</style>",
+        "NT_ITEM_REBIRTH_LORE": "<style=cStack>无数据……</style>",
+
+        "NT_ITEM_TENEBRALGLAND_NAME": "暗蚀腺体",
+        "NT_ITEM_TENEBRALGLAND_PICKUP": "暴击造成出血，击杀出血敌人可强化暴击。<style=cIsVoid>腐化所有易爆的脾脏。</style>",
+        "NT_ITEM_TENEBRALGLAND_DESC": "获得<style=cIsDamage>{0}%</style> <style=cStack>(每层叠加+{1}%)</style>几率在暴击时造成<style=cDeath>出血</style>。击杀处于出血状态的敌人<style=cIsDamage>使你的暴击率与暴击伤害提升{2}%</style>，持续{3}秒，每层叠加最多触发{4}次。<style=cIsVoid>腐化所有</style><style=cShrine>易爆的脾脏。</style>",
+        "NT_ITEM_TENEBRALGLAND_LORE": "<style=cStack>无数据……</style>",
+
+        "NT_ITEM_MOBIUSNODE_NAME": "莫比乌斯节点",
+        "NT_ITEM_MOBIUSNODE_PICKUP": "生命值低于一半时立即恢复护盾。<style=cIsVoid>腐化所有创世之环。</style>",
+        "NT_ITEM_MOBIUSNODE_DESC": "获得等同于最大生命值<style=cIsHealing>{0}%</style>的护盾。生命值低于<style=cIsHealth>{1}%</style>时<style=cIsHealing>立即恢复所有护盾</style>并眩晕附近敌人。每<style=cIsHealing>{4}</style>秒最多触发{2}次<style=cStack>(每层叠加+{3})</style>。<style=cIsVoid>腐化所有</style><style=cShrine>创世之环。</style>",
+        "NT_ITEM_MOBIUSNODE_LORE": "<style=cStack>< UES 接触之光 回收计划 ></style> \n<style=cStack>< 内部记录 ></style> \n<style=cStack>< 回收自：‘无’ ></style> \n<style=cStack>< 附言：‘无’ ></style> \n\n<style=cStack>记录者：米拉·L.</style> \n\n<style=cStack>< 记录开始 ></style> \n\n他们称之为模拟造物。\n\n往回走——尽可能深刻地回忆你的童年。每一个你还能清晰看见的瞬间。我记得我父亲钓上来一条巨大的鲷鱼，带回家后坚持要亲自下厨。结果做得难吃得要命。\n\n然后，回忆下一个按时间顺序的记忆。我记得有一天上学，我的鞋带松了，脸朝地摔在走廊里。\n\n你会以为这些记忆，以及所有前后的记忆，构成了一个线性的故事——你的人生故事。我们只能看见三维，却用四维思考。而至少，还有第五维。\n\n事实上，高维现实里存在无数向量：在那里，我父亲从没钓上过那条鱼，我也从没松开过鞋带。只需要在高维空间里移动不到一微米，那些记忆就会变得面目全非。以这片微薄的低维现实视角来看，甚至是不可能存在的。重力与熵只存在于这里，这片微小的切片上。\n\n有人向我展示了不同的向量。我看见我父亲化作羽毛分形中的无限存在。我看见一个比最深的黑暗还要黑的世界。我感受到一步跨越宇宙两端、一念进入另一个宇宙是什么感觉。\n\n他们不是外星人。虚空也不是他们的世界。他们注视着每一个可能的世界。他们没有目的，只为玩乐。如果我留在这里，我将永远只是他们的玩具。我必须无数次重复品尝那条难吃得要死的鱼，直到我忘记一切，重新开始。\n\n我再也无法活在这片微薄的现实切片里了。\n\n<style=cStack>< 记录结束 ></style>",
+
+        "NT_ITEM_REBELSOUL_NAME": "叛逆之魂",
+        "NT_ITEM_REBELSOUL_PICKUP": "使用装备时获得隐身与移速提升，吸取附近敌人生命。<style=cIsVoid>腐化所有小门徒。</style>",
+        "NT_ITEM_REBELSOUL_DESC": "激活装备时获得<style=cisUtility>隐身</style>，脱离战斗并提升移动速度<style=cisUtility>40%</style>，持续<style=cisUtility>{0}</style> <style=cStack>(每层叠加+{1})</style>秒。隐身期间，每秒从<style=cisUtility>{4}米</style>内非首领敌人身上<style=cIsHealing>吸取{2}%</style> <style=cStack>(每层叠加+{3}%)</style> <style=cisHealing>生命值</style>。<style=cisUtility>进入战斗会打断隐身。</style> <style=cIsVoid>腐化所有</style><style=cShrine>小门徒。</style>",
+        "NT_ITEM_REBELSOUL_LORE": "<style=cStack>无数据……</style>",
+
+        "NT_ITEM_SPLITNUCLEUS_NAME": "分裂核心",
+        "NT_ITEM_SPLITNUCLEUS_PICKUP": "完全格挡高伤害攻击。击杀精英怪物可恢复充能。<style=cIsVoid>腐化所有</style><style=cShrine>防御核心。</style>",
+        "NT_ITEM_SPLITNUCLEUS_DESC": "最多可完全格挡<style=cIsHealth>{0}次</style><style=cStack>(每层+{1}次)</style>对你造成最大生命值<style=cIsHealth>{2}%</style>及以上伤害的攻击。<style=cIsDamage>击杀一名精英怪物可获得{3}次格挡充能。</style><style=cIsVoid>腐化所有</style><style=cShrine>防御核心。</style>",
+        "NT_ITEM_SPLITNUCLEUS_LORE": "<style=cStack>< 联合远征军曙光号回收计划 ></style>\n<style=cStack>< 音频记录转录本 ></style>\n<style=cStack>< 回收地点：「阿尔法 2 号安全空投区外围」 ></style>\n<style=cStack>< 附评：「无」 ></style>\n\n<style=cStack> 杰德 = 科研小队学徒「杰德・S」</style>\n<style=cStack> 哈维 = 突击兵编制人员「哈维・D」</style>\n\n<style=cStack>< 转录开始 ></style>\n\n 杰德：你不是来真的吧？\n\n 哈维：千真万确。指个东西，我来对它用腐化那套。\n\n 杰德：然后它就会变成那玩意儿的诡异变态版？【笑】\n\n 哈维：只管指个东西就行！\n\n 哈维：别指那个。【笑】\n\n 杰德：行，那这个呢？\n\n【能量冲击声；疑似来自「空无者」样本】\n\n 杰德：那玩意儿到底是个什么鬼东西！\n\n 哈维：真成了。\n\n 杰德：看着像某种螃蟹。虚空蟹？就叫「虚蟹」？\n\n 哈维：我们就叫它「虚蟹」，没错。\n\n 杰德：也太酷了吧。\n\n 哈维：【笑】\n\n【打斗声。哈维附注：这玩意儿夹了她一口！】\n\n 杰德：【大叫】\n\n 哈维：靠！疼不疼？\n\n 杰德：没事的。这些螃蟹就是 ——\n\n 哈维：我有急救包。等我一下。\n\n 杰德：谢了。\n\n 哈维：或许我们不该这么用它。现在想想，这主意蠢透了。我差点把你 —— 差点把人弄伤。\n\n 杰德：【轻笑】\n\n 哈维：咋了？\n\n 杰德：都说了我没事。你这可是给我弄来了有史以来最好的研究素材。一点小划伤而已，不值一提。\n\n【长时间沉默】\n\n<style=cStack>< 转录结束 ></style>",
+
+        "NT_ITEM_EFFIGYOFROT_NAME": "腐坏圣像",
+        "NT_ITEM_EFFIGYOFROT_PICKUP": "近战命中时施加传染性剧毒，毒素会为你缓慢恢复生命值。<style=cIsVoid>腐化所有</style><style=cShrine>泥沼之瓮。</style>",
+        "NT_ITEM_EFFIGYOFROT_DESC": "近战范围内击中敌人，将对其施加<style=cIsHealing>剧毒</style>，持续{0}秒。你的所有剧毒或枯萎效果现在将为你<style=cIsHealing>每秒恢复{1}点生命值</style><style=cStack>(每层+{2}点/秒)</style>，且每秒有<style=cIsDamage>{3}%</style><style=cStack>(每层+{4}%)</style>的几率向<style=cIsDamage>{5}米范围内的一名敌人传播</style>。<style=cIsVoid>腐化所有</style><style=cShrine>泥沼之瓮。</style>",
+        "NT_ITEM_EFFIGYOFROT_LORE": "<style=cStack>无数据……</style>",
     }
 }
