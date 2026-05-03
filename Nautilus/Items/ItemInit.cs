@@ -390,6 +390,28 @@ namespace Nautilus.Items
             }
         }
 
+        /// <summary>
+        ///     0 = enabled, 1 = disabled, 2 = missing (likely a vanilla item)
+        /// </summary>
+        public static int IsItemEnabledByString(string name)
+        {
+            foreach (ItemBase ib in ItemList)
+            {
+                if (ib.Name == name)
+                {
+                    if (ib.Enabled)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+            return 2;
+        }
+
         public static void FormatDescriptions()
         {
             foreach(ItemBase ib in ItemList)
@@ -406,6 +428,11 @@ namespace Nautilus.Items
             if (String.IsNullOrEmpty(ingredient1) || String.IsNullOrEmpty(ingredient2) || String.IsNullOrEmpty(result))
             {
                 Log.Warning("Failed adding recipe for " + result + " due to missing item names!");
+                return;
+            }
+            if (IsItemEnabledByString(ingredient1) == 1 || IsItemEnabledByString(ingredient2) == 1 || IsItemEnabledByString(result) == 1)
+            {
+                Log.Warning("Failed adding recipe for " + result + " due to one or more items being disabled!");
                 return;
             }
 

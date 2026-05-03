@@ -198,11 +198,11 @@ namespace Nautilus.Items
                     chestBehavior.dropTable.GenerateDistinctPickups(generatedDropsList, PaleStar_Choices.Value + (PaleStar_ChoicesStack.Value * (itemCount - 1)), chestBehavior.rng);
                     int dropAmount = 0;
 
-                    List<PickupIndex> voidTier1Indices = Run.instance.availableVoidTier1DropList;
+                    List<PickupIndex> voidTier1Indices = Run.instance.availableVoidTier1DropList.ToList();
                     Util.ShuffleList(voidTier1Indices);
-                    List<PickupIndex> voidTier2Indices = Run.instance.availableVoidTier2DropList;
+                    List<PickupIndex> voidTier2Indices = Run.instance.availableVoidTier2DropList.ToList();
                     Util.ShuffleList(voidTier2Indices);
-                    List<PickupIndex> voidTier3Indices = Run.instance.availableVoidTier3DropList;
+                    List<PickupIndex> voidTier3Indices = Run.instance.availableVoidTier3DropList.ToList();
                     Util.ShuffleList(voidTier3Indices);
 
                     foreach (UniquePickup uniquePickup in generatedDropsList)
@@ -239,7 +239,7 @@ namespace Nautilus.Items
                                         break;
                                 }
 
-                                if (currentPickupDef != null)
+                                if (currentPickupDef != null && !voidedDrops.Contains(currentPickupDef.pickupIndex))
                                 {
                                     voidedDrops.Add(currentPickupDef.pickupIndex);
                                     voidedDropsUnique.Add(new UniquePickup(currentPickupDef.pickupIndex));
