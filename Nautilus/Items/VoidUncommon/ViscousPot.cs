@@ -254,7 +254,7 @@ namespace Nautilus.Items
         // Recipe
         public override void AddCorruptionRecipe()
         {
-            if (ViscousPot_Recipe.Value == true && ItemInit.Wellies.Enabled)
+            if (ViscousPot_Recipe.Value == true /*&& ItemInit.Wellies.Enabled*/)
             {
                 ItemInit.MakeCorruptionRecipe
                 (
@@ -271,25 +271,24 @@ namespace Nautilus.Items
             GameObject ItemDisplayPrefab = Helpers.PrepareItemDisplayModel(PrefabAPI.InstantiateClone(itemPrefab, ItemDef.name + "Display", false));
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
 
-            /*
             #region IDR
             rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localPos = new Vector3(0.23243F, -0.01495F, 0.10609F),
+                        localAngles = new Vector3(0F, 0F, 181.5702F),
+                        localScale = new Vector3(0.73856F, 0.73856F, 0.73856F)
                     }
                 }
             );
             rules.Add("mdlHuntress", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "FootR",
+                        localPos = new Vector3(0F, 0.09763F, -0.07923F),
+                        localAngles = new Vector3(274.1588F, 0.00001F, 2.5506F),
+                        localScale = new Vector3(1.30692F, 1.30692F, 1.30692F)
                     }
                 }
             );
@@ -297,19 +296,19 @@ namespace Nautilus.Items
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localPos = new Vector3(0.24255F, -0.00993F, -0.03103F),
+                        localAngles = new Vector3(0F, 0F, 177.32F),
+                        localScale = new Vector3(0.76163F, 0.76163F, 0.76163F)
                     }
                 }
             );
             rules.Add("mdlToolbot", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
+                        childName = "Chest",
+                        localPos = new Vector3(0F, 1.86914F, 0.01515F),
                         localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localScale = new Vector3(6.73994F, 6.73994F, 6.73994F)
                     }
                 }
             );
@@ -317,8 +316,8 @@ namespace Nautilus.Items
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
+                        localPos = new Vector3(-0.30395F, 0.13843F, -0.00856F),
+                        localAngles = new Vector3(0.82139F, 180F, 180F),
                         localScale = new Vector3(1F, 1F, 1F)
                     }
                 }
@@ -326,50 +325,50 @@ namespace Nautilus.Items
             rules.Add("mdlMage", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "FootL",
+                        localPos = new Vector3(0.00051F, 0.05496F, 0.03331F),
+                        localAngles = new Vector3(315.4312F, 146.2849F, 210.6754F),
+                        localScale = new Vector3(1.08864F, 1.08864F, 1.08864F)
                     }
                 }
             );
             rules.Add("mdlMerc", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "Head",
+                        localPos = new Vector3(0F, 0.1795F, -0.00001F),
+                        localAngles = new Vector3(0F, 0F, 180F),
+                        localScale = new Vector3(1.67378F, 1.67378F, 1.67378F)
                     }
                 }
             );
             rules.Add("mdlTreebot", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
+                        childName = "PlatformBase",
+                        localPos = new Vector3(-0.76272F, -0.08788F, -0.30847F),
                         localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localScale = new Vector3(1.65139F, 1.65139F, 1.65139F)
                     }
                 }
             );
             rules.Add("mdlLoader", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
+                        childName = "Chest",
+                        localPos = new Vector3(0F, 0.13543F, 0.29333F),
                         localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localScale = new Vector3(1.10422F, 1.10422F, 1.10422F)
                     }
                 }
             );
             rules.Add("mdlCroco", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "FootR",
+                        localPos = new Vector3(0.00001F, 0.50056F, -1.04024F),
+                        localAngles = new Vector3(348.8859F, 180F, 180F),
+                        localScale = new Vector3(11.03721F, 11.03721F, 14.89955F)
                     }
                 }
             );
@@ -377,19 +376,19 @@ namespace Nautilus.Items
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localPos = new Vector3(0.29921F, -0.10334F, -0.19508F),
+                        localAngles = new Vector3(0F, 0F, 180.8385F),
+                        localScale = new Vector3(1.1213F, 1.1213F, 1.1213F)
                     }
                 }
             );
             rules.Add("mdlRailGunner", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "GunRoot",
+                        localPos = new Vector3(0F, -0.56949F, -0.12557F),
+                        localAngles = new Vector3(359.8944F, 180F, 180F),
+                        localScale = new Vector3(0.63613F, 0.63613F, 0.63613F)
                     }
                 }
             );
@@ -397,18 +396,18 @@ namespace Nautilus.Items
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localPos = new Vector3(0.0038F, 0.07978F, 0F),
+                        localAngles = new Vector3(0F, 0F, 180.4983F),
+                        localScale = new Vector3(1.52951F, 1.52951F, 1.52951F)
                     }
                 }
             );
             rules.Add("mdlSeeker", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
+                        childName = "Pack",
+                        localPos = new Vector3(-0.31313F, 0.21783F, -0.22959F),
+                        localAngles = new Vector3(0F, 0F, 47.0003F),
                         localScale = new Vector3(1F, 1F, 1F)
                     }
                 }
@@ -416,10 +415,10 @@ namespace Nautilus.Items
             rules.Add("mdlFalseSon", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "HandR",
+                        localPos = new Vector3(-0.00001F, 0.29194F, -0.04805F),
+                        localAngles = new Vector3(3.72109F, 180F, 180F),
+                        localScale = new Vector3(1.63274F, 1.63274F, 1.63274F)
                     }
                 }
             );
@@ -427,34 +426,33 @@ namespace Nautilus.Items
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
                         childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        localPos = new Vector3(0.09855F, 0.29608F, 0.00934F),
+                        localAngles = new Vector3(0F, 0F, 98.57596F),
+                        localScale = new Vector3(1.57669F, 1.57669F, 1.57669F)
                     }
                 }
             );
             rules.Add("mdlDroneTech", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "Head",
+                        localPos = new Vector3(-0.36535F, -0.02339F, 0F),
+                        localAngles = new Vector3(0F, 0F, 271.7016F),
+                        localScale = new Vector3(1.11821F, 1.11821F, 1.11821F)
                     }
                 }
             );
             rules.Add("mdlDrifter", new RoR2.ItemDisplayRule[]{new RoR2.ItemDisplayRule{
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
                         followerPrefab = ItemDisplayPrefab,
-                        childName = "Pelvis",
-                        localPos = new Vector3(0F, 0F, 0F),
-                        localAngles = new Vector3(0F, 0F, 0F),
-                        localScale = new Vector3(1F, 1F, 1F)
+                        childName = "BagPocketL",
+                        localPos = new Vector3(-0.22659F, -0.02006F, 0.0012F),
+                        localAngles = new Vector3(86.2076F, 25.61749F, 25.6665F),
+                        localScale = new Vector3(1.24465F, 1.24465F, 1.24465F)
                     }
                 }
             );
             #endregion
-            */
 
             return rules;
         }

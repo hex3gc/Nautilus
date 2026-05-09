@@ -237,7 +237,7 @@ namespace Nautilus.Items
         // Recipe
         public override void AddCorruptionRecipe()
         {
-            if (Rebirth_Recipe.Value == true && ItemInit.PaleStar.Enabled)
+            if (Rebirth_Recipe.Value == true /*&& ItemInit.PaleStar.Enabled*/)
             {
                 ItemInit.MakeCorruptionRecipe
                 (

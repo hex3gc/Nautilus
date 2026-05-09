@@ -11,7 +11,8 @@ namespace Nautilus.Items
             EffectData effectData = new EffectData
             {
                 origin = origin,
-                genericFloat = base.duration
+                genericFloat = base.duration,
+                scale = 2f
             };
             effectData.SetHurtBoxReference(target);
             EffectManager.SpawnEffect(OrbStorageUtility.Get("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), effectData, transmit: true);

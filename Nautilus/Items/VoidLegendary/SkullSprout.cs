@@ -250,7 +250,7 @@ namespace Nautilus.Items
         // Recipe
         public override void AddCorruptionRecipe()
         {
-            if (SkullSprout_Recipe.Value == true && ItemInit.HydraTooth.Enabled)
+            if (SkullSprout_Recipe.Value == true /*&& ItemInit.HydraTooth.Enabled*/)
             {
                 ItemInit.MakeCorruptionRecipe
                 (

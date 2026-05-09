@@ -70,7 +70,7 @@ namespace Nautilus.Items
             "Void legendary: Altered Soul",
             "Additional on-kills",
             "How many on-kill effect duplications occur.",
-            2,
+            1,
             1f,
             5f,
             1f
@@ -80,7 +80,7 @@ namespace Nautilus.Items
             "Void legendary: Altered Soul",
             "Additional on-kills (per stack)",
             "How many on-kill effect duplications occur, per additional stack.",
-            2,
+            1,
             1f,
             5f,
             1f
@@ -208,7 +208,11 @@ namespace Nautilus.Items
                         CharacterBody droppedSoulCharacterBody = droppedSoul.GetComponent<CharacterBody>();
 
                         DamageReport copyReport = new DamageReport(damageReport.damageInfo, droppedSoulHealthComponent, damageReport.damageDealt, damageReport.combinedHealthBeforeDamage);
-                        
+                        if (damageReport.victimIsElite)
+                        {
+                            copyReport.victimIsElite = true;
+                        }
+
                         droppedSoulBehavior.DamageReport = copyReport;
                         droppedSoulBehavior.onKillInterval = AlteredSoul_KillInterval.Value;
                         droppedSoulBehavior.remainingKills = AlteredSoul_Kills.Value + (AlteredSoul_KillsStack.Value * (itemCount - 1));
