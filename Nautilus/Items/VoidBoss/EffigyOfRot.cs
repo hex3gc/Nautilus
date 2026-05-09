@@ -323,7 +323,7 @@ namespace Nautilus.Items
         // Recipe
         public override void AddCorruptionRecipe()
         {
-            if (EffigyOfRot_Recipe.Value == true && ItemInit.ViscousPot.Enabled)
+            if (EffigyOfRot_Recipe.Value == true /*&& ItemInit.ViscousPot.Enabled*/)
             {
                 ItemInit.MakeCorruptionRecipe
                 (

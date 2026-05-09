@@ -29,8 +29,8 @@ namespace Nautilus.Interactables
         public static ConfigItem<bool> ShrineOfTheDeep_Enabled = new ConfigItem<bool>
         (
             "Interactable: Shrine of the Deep",
-            "Interactable enabled",
-            "Should this interactable appear in runs? Disabling also removes all boss item drops.",
+            "Boss drops enabled",
+            "Enables both the Shrine Of The Deep and the Void Boss system. To remove the shrine only, set its Director Weight to 0.",
             true
         );
         public static ConfigItem<int> ShrineOfTheDeep_DirectorCost = new ConfigItem<int>
@@ -85,19 +85,6 @@ namespace Nautilus.Interactables
                     _voidEliteDef = Addressables.LoadAssetAsync<EliteDef>("RoR2/DLC1/EliteVoid/edVoid.asset").WaitForCompletion();
                 }
                 return _voidEliteDef;
-            }
-            set;
-        }
-        private EquipmentIndex _voidEliteEquip;
-        public EquipmentIndex voidEliteEquip
-        {
-            get
-            {
-                if (_voidEliteEquip == null)
-                {
-                    _voidEliteEquip = EquipmentCatalog.FindEquipmentIndex("EliteVoidEquipment");
-                }
-                return _voidEliteEquip;
             }
             set;
         }
@@ -306,12 +293,20 @@ namespace Nautilus.Interactables
             // Override boss rewards
             On.RoR2.BossGroup.DropRewards += (orig, self) =>
             {
-                if ((self.bossDrops != null || self.bossDropTables != null) && TeleporterInteraction.instance != null && self.forceTier3Reward != true && TeleporterInteraction.instance.GetComponent<ShrineOfTheDeepActivationBehavior>())
+                if ((self.bossDrops != null || self.bossDropTables != null) && TeleporterInteraction.instance != null && self.forceTier3Reward != true)
                 {
-                    self.bossDrops = ConvertBossDrops(self.bossDrops);
-                    self.bossDropTables = ConvertBossDropTables(self.bossDropTables, self.rng);
-                    self.bonusRewardCount += 1;
-                    self.bossDropChance = 0.2f;
+                    if (TeleporterInteraction.instance.GetComponent<ShrineOfTheDeepActivationBehavior>())
+                    {
+                        self.bossDrops = ConvertBossDrops(self.bossDrops);
+                        self.bossDropTables = ConvertBossDropTables(self.bossDropTables, self.rng);
+                        self.bonusRewardCount += 1;
+                        self.bossDropChance = 0.2f;
+                    }
+                    else if (TeleporterInteraction.instance.GetComponent<RegularVoidActivationBehavior>())
+                    {
+                        self.bossDrops = ConvertBossDrops(self.bossDrops);
+                        self.bossDropTables = ConvertBossDropTables(self.bossDropTables, self.rng);
+                    }
                 }
 
                 orig(self);
@@ -333,6 +328,21 @@ namespace Nautilus.Interactables
                 }
 
                 return orig(self);
+            };
+
+            // Override boss drop tables with void versions if an enemy is corrupted during the fight
+            On.RoR2.Inventory.SetEquipmentIndexForSlot_EquipmentIndex_uint_uint += (orig, self, newEquipmentIndex, slot, set) =>
+            {
+                orig(self, newEquipmentIndex, slot, set);
+
+                if (newEquipmentIndex == DLC1Content.Equipment.EliteVoidEquipment.equipmentIndex)
+                {
+                    CharacterMaster characterMaster = self.gameObject.GetComponentInChildren<CharacterMaster>();
+                    if (characterMaster && characterMaster.GetBody() && characterMaster.isBoss && TeleporterInteraction.instance != null)
+                    {
+                        TeleporterInteraction.instance.gameObject.AddComponent<RegularVoidActivationBehavior>();
+                    }
+                }
             };
 
             Log.Info("Added interactable Shrine of the Deep");
@@ -381,6 +391,18 @@ namespace Nautilus.Interactables
                 else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.SiphonOnLowHealth.itemIndex) && EffigyOfRot.EffigyOfRot_Enabled.Value)
                 {
                     ret.Add(ItemInit.EffigyOfRot.explicitPickupDropTable);
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(DLC3Content.Items.ExtraEquipment.itemIndex) && ObserversEye.ObserversEye_Enabled.Value)
+                {
+                    ret.Add(ItemInit.ObserversEye.explicitPickupDropTable);
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(DLC3Content.Items.ShockDamageAura.itemIndex) && DeepVoidSignal.DeepVoidSignal_Enabled.Value)
+                {
+                    ret.Add(ItemInit.DeepVoidSignal.explicitPickupDropTable);
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.RoboBallBuddy.itemIndex) && ApathyCore.ApathyCore_Enabled.Value)
+                {
+                    ret.Add(ItemInit.ApathyCore.explicitPickupDropTable);
                 }
                 else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.BeetleGland.itemIndex) && ShrineOfTheDeep_ZoeaRework.Value == true)
                 {
@@ -436,6 +458,18 @@ namespace Nautilus.Interactables
                 else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.SiphonOnLowHealth.itemIndex) && EffigyOfRot.EffigyOfRot_Enabled.Value)
                 {
                     ret.Add(new UniquePickup(PickupCatalog.FindPickupIndex(ItemInit.EffigyOfRot.ItemIndex)));
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(DLC3Content.Items.ExtraEquipment.itemIndex) && ObserversEye.ObserversEye_Enabled.Value)
+                {
+                    ret.Add(new UniquePickup(PickupCatalog.FindPickupIndex(ItemInit.ObserversEye.ItemIndex)));
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(DLC3Content.Items.ShockDamageAura.itemIndex) && DeepVoidSignal.DeepVoidSignal_Enabled.Value)
+                {
+                    ret.Add(new UniquePickup(PickupCatalog.FindPickupIndex(ItemInit.DeepVoidSignal.ItemIndex)));
+                }
+                else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.RoboBallBuddy.itemIndex) && ApathyCore.ApathyCore_Enabled.Value)
+                {
+                    ret.Add(new UniquePickup(PickupCatalog.FindPickupIndex(ItemInit.ApathyCore.ItemIndex)));
                 }
                 else if (uniquePickup.pickupIndex == PickupCatalog.FindPickupIndex(RoR2Content.Items.BeetleGland.itemIndex) && ShrineOfTheDeep_ZoeaRework.Value)
                 {
@@ -501,5 +535,10 @@ namespace Nautilus.Interactables
     public class ShrineOfTheDeepActivationBehavior : NetworkBehaviour
     {
         
+    }
+
+    public class RegularVoidActivationBehavior : NetworkBehaviour
+    {
+
     }
 }

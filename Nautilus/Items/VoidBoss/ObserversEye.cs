@@ -12,52 +12,31 @@ namespace Nautilus.Items
 {
     public static partial class ItemInit
     {
-        public static DrenchedPerforator DrenchedPerforator = new DrenchedPerforator
+        public static ObserversEye ObserversEye = new ObserversEye
         (
-            "DrenchedPerforator",
-            [ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.ExtractorUnitBlacklist, ItemTag.BrotherBlacklist],
+            "ObserversEye",
+            [ItemTag.Utility, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist],
             ItemTier.VoidBoss
         );
     }
 
     /// <summary>
     ///     // Ver.1
+    ///     Functional Coupler can be preferable when you want the utility of multiple equipments (e.g using a Recycler with an Eccentric Vase)
+    ///     Observer's Optics acts as a good opposite of Coupler since it lets you maximize a single equipment, and forces you to save your charges for important moments
     /// </summary>
-    public class DrenchedPerforator : ItemBase
+    public class ObserversEye : ItemBase
     {
-        public override bool Enabled => DrenchedPerforator_Enabled.Value;
-        public override ItemDef ConversionItemDef => Addressables.LoadAssetAsync<ItemDef>("RoR2/Base/FireballsOnHit/FireballsOnHit.asset").WaitForCompletion();
+        public override bool Enabled => ObserversEye_Enabled.Value;
+        public override ItemDef ConversionItemDef => Addressables.LoadAssetAsync<ItemDef>("RoR2/DLC3/Items/ExtraEquipment/ExtraEquipment.asset").WaitForCompletion();
         public override GameObject itemPrefab => OverwritePrefabMaterials();
-        public override Sprite itemIcon => Main.Assets.LoadAsset<Sprite>("Assets/icons/drenchedPerforator.png");
-        public ItemDef ConversionItemDefExtra => Addressables.LoadAssetAsync<ItemDef>("RoR2/Base/LightningStrikeOnHit/LightningStrikeOnHit.asset").WaitForCompletion();
-        public Material material0 => Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/TrimSheets/matTrimSheetMetalLightSnow.mat").WaitForCompletion();
-        public Material material1 => Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoSpine.mat").WaitForCompletion();
-        private GameObject _explodePrefab;
-        public GameObject explodePrefab
-        {
-            get
-            {
-                if (_explodePrefab == null)
-                {
-                    _explodePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidMegaCrab/VoidMegaCrabDeathBombExplosion.prefab").WaitForCompletion();
-                }
-                return _explodePrefab;
-            }
-            set;
-        }
-        private GameObject _individualExplodePrefab;
-        public GameObject individualExplodePrefab
-        {
-            get
-            {
-                if (_individualExplodePrefab == null)
-                {
-                    _individualExplodePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/BleedOnHitVoid/FractureImpactEffect.prefab").WaitForCompletion();
-                }
-                return _individualExplodePrefab;
-            }
-            set;
-        }
+        public override Sprite itemIcon => Main.Assets.LoadAsset<Sprite>("Assets/icons/observersEye.png");
+        public Material material0 => Addressables.LoadAssetAsync<Material>("RoR2/Base/BonusGoldPackOnKill/matTomeGold.mat").WaitForCompletion();
+        public Material material1 => Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VendingMachine/matVendingMachineGlass.mat").WaitForCompletion();
+        public Material material2 => Addressables.LoadAssetAsync<Material>("RoR2/Base/ShrineBoss/matShrineBoss.mat").WaitForCompletion();
+        public Material material3 => Addressables.LoadAssetAsync<Material>("RoR2/DLC3/Items/ShockDamageAura/matDroneShockDamageGlass.mat").WaitForCompletion();
+        public Material material4 => Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Seeker/matSeekerGlass.mat").WaitForCompletion();
+        public Material material5 => Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Items/AttackSpeedPerNearbyAllyOrEnemy/matRageCrystalGlass.mat").WaitForCompletion();
         private ExplicitPickupDropTable _explicitPickupDropTable;
         public ExplicitPickupDropTable explicitPickupDropTable
         {
@@ -81,126 +60,83 @@ namespace Nautilus.Items
             }
             set;
         }
-        public static ModdedProcType DrenchedPerforatorProcType = ProcTypeAPI.ReserveProcType();
 
-        public DrenchedPerforator(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = false, bool _hidden = false) : 
-        base(_name, _tags, _tier, _canRemove, _isConsumed, _hidden){}
+        public ObserversEye(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = false, bool _hidden = false) :
+        base(_name, _tags, _tier, _canRemove, _isConsumed, _hidden)
+        { }
 
         // Config
-        public static ConfigItem<bool> DrenchedPerforator_Enabled = new ConfigItem<bool>
+        public static ConfigItem<bool> ObserversEye_Enabled = new ConfigItem<bool>
         (
-            "Void boss: Drenched Perforator",
+            "Void boss: Observers Optics",
             "Item enabled",
             "Should this item appear in runs?",
             true
         );
-        public static ConfigItem<float> DrenchedPerforator_Threshold = new ConfigItem<float>
+        public static ConfigItem<int> ObserversEye_Activations = new ConfigItem<int>
         (
-            "Void boss: Drenched Perforator",
-            "Damage threshold",
-            "Repeating fractional damage threshold for additional stacks of collapse to be added.",
-            6f,
-            1f,
-            12f,
-            0.5f
-        );
-        public static ConfigItem<int> DrenchedPerforator_Stacks = new ConfigItem<int>
-        (
-            "Void boss: Drenched Perforator",
-            "Collapse stacks",
-            "Number of stacks of collapse to add on passing threshold.",
-            1,
+            "Void boss: Observers Optics",
+            "Additional equipment activations",
+            "How many extra times is your equipment activated?",
+            2,
             1f,
             5f,
             1f
         );
-        public static ConfigItem<int> DrenchedPerforator_StacksStack = new ConfigItem<int>
+        public static ConfigItem<int> ObserversEye_ActivationsStack = new ConfigItem<int>
         (
-            "Void boss: Drenched Perforator",
-            "Collapse stacks (per stack)",
-            "Number of stacks of collapse to add on passing threshold, per additional stack.",
-            1,
+            "Void boss: Observers Optics",
+            "Additional equipment activations (per stack)",
+            "How many extra times is your equipment activated, per additional stack?",
+            2,
             1f,
             5f,
             1f
         );
-        public static ConfigItem<float> DrenchedPerforator_ExplosionRadiusv2 = new ConfigItem<float>
+        public static ConfigItem<float> ObserversEye_EquipCooldownMult = new ConfigItem<float>
         (
-            "Void boss: Drenched Perforator",
-            "Explosion radius",
-            "Meters radius for the base collapse explosion.",
-            12f,
-            1f,
-            24f,
-            1f
-        );
-        public static ConfigItem<float> DrenchedPerforator_ExplosionRadiusIncreasev2 = new ConfigItem<float>
-        (
-            "Void boss: Drenched Perforator",
-            "Explosion radius increase",
-            "Meters radius the collapse explosion expands when additional collapse stacks are added.",
-            4f,
-            1f,
-            8f,
-            1f
-        );
-        public static ConfigItem<float> DrenchedPerforator_ExplosionDamage = new ConfigItem<float>
-        (
-            "Void boss: Drenched Perforator",
-            "Explosion damage",
-            "Fractional damage (1 = 100%) dealt by explosion.",
-            4f,
-            1f,
-            12f,
+            "Void boss: Observers Optics",
+            "Equipment cooldown mult",
+            "What multiplier should be used for equipment cooldown?",
+            2f,
+            0.1f,
+            5f,
             0.1f
         );
-        public static ConfigItem<float> DrenchedPerforator_ExplosionProcCoefficient = new ConfigItem<float>
+        public static ConfigItem<bool> ObserversEye_Recipe = new ConfigItem<bool>
         (
-            "Void boss: Drenched Perforator",
-            "Explosion proc coefficient",
-            "Proc coefficient of the on-collapse explosion.",
-            0.2f,
-            0f,
-            1f,
-            0.05f
-        );
-        public static ConfigItem<bool> DrenchedPerforator_Recipe = new ConfigItem<bool>
-        (
-            "Void boss: Drenched Perforator",
+            "Void boss: Observers Optics",
             "Recipe enabled",
             "Should this item have a custom corruption recipe?",
             true
         );
-        public static ConfigItem<string> DrenchedPerforator_Ingredient1 = new ConfigItem<string>
+        public static ConfigItem<string> ObserversEye_Ingredient1 = new ConfigItem<string>
         (
-            "Void boss: Drenched Perforator",
+            "Void boss: Observers Optics",
             "Recipe ingredient 1",
             "First ingredient for corruption recipe",
-            "FireballsOnHit"
+            "ExtraEquipment"
         );
-        public static ConfigItem<string> DrenchedPerforator_Ingredient1Alt = new ConfigItem<string>
+        public static ConfigItem<string> ObserversEye_Ingredient2 = new ConfigItem<string>
         (
-            "Void boss: Drenched Perforator",
-            "Recipe ingredient 1 (alt)",
-            "First ingredient for corruption recipe (alt)",
-            "LightningStrikeOnHit"
-        );
-        public static ConfigItem<string> DrenchedPerforator_Ingredient2 = new ConfigItem<string>
-        (
-            "Void boss: Drenched Perforator",
+            "Void boss: Observers Optics",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "HydraTooth"
+            "EquipmentMagazineVoid"
         );
 
         public GameObject OverwritePrefabMaterials()
         {
-            GameObject ret = Main.Assets.LoadAsset<GameObject>("Assets/prefabs/drenchedPerforator.prefab");
+            GameObject ret = Main.Assets.LoadAsset<GameObject>("Assets/prefabs/observersEye.prefab");
 
             Material[] materials =
             {
                 material0,
-                material1
+                material1,
+                material2,
+                material3,
+                material4,
+                material5
             };
             ret.GetComponentInChildren<MeshRenderer>().SetMaterialArray(materials);
 
@@ -218,12 +154,9 @@ namespace Nautilus.Items
                 String.Format
                 (
                     Language.currentLanguage.GetLocalizedStringByToken(descriptionToken),
-                    DrenchedPerforator_Threshold.Value * 100f,
-                    DrenchedPerforator_Stacks.Value,
-                    DrenchedPerforator_StacksStack.Value,
-                    DrenchedPerforator_ExplosionDamage.Value * 100f,
-                    DrenchedPerforator_ExplosionRadiusv2.Value,
-                    DrenchedPerforator_ExplosionRadiusIncreasev2.Value
+                    ObserversEye_Activations.Value,
+                    ObserversEye_ActivationsStack.Value,
+                    ObserversEye_EquipCooldownMult.Value
                 )
             );
         }
@@ -231,66 +164,84 @@ namespace Nautilus.Items
         // Hooks
         public override void RegisterHooks()
         {
-            // Additional void conversion
-            ItemDef.Pair transformation = new()
+            // Add/remove behavior on inventory change
+            On.RoR2.CharacterBody.OnInventoryChanged += (orig, self) =>
             {
-                itemDef1 = ConversionItemDefExtra,
-                itemDef2 = ItemDef
-            };
-            Main.ItemConversionList.Add(transformation);
+                orig(self);
 
-            Log.Info(String.Format("Added void conversion from {0} to {1}", ConversionItemDefExtra.name, ItemDef.name));
+                ObserversEyeBehavior behavior = self.GetComponent<ObserversEyeBehavior>();
+                int itemCount = GetItemCountEffective(self);
 
-            // On-hit trigger
-            On.RoR2.GlobalEventManager.OnHitEnemy += (orig, self, damageInfo, victimObject) =>
-            {
-                orig(self, damageInfo, victimObject);
-
-                if (!damageInfo.procChainMask.HasProc(ProcType.FractureOnHit) && !ProcTypeAPI.HasModdedProc(damageInfo.procChainMask, DrenchedPerforatorProcType) && !damageInfo.rejected && damageInfo.procCoefficient > 0f && damageInfo.damage > 0f && damageInfo.attacker && damageInfo.attacker.TryGetComponent(out CharacterBody attackerBody) && attackerBody.master && victimObject.TryGetComponent(out CharacterBody victimBody) && victimBody.healthComponent)
+                if (GetItemCountEffective(self) > 0 && !behavior)
                 {
-                    int itemCount = GetItemCountEffective(attackerBody);
-                    
-                    if (itemCount > 0 && attackerBody.teamComponent && victimBody.teamComponent)
-                    {
-                        float damage = damageInfo.crit ? damageInfo.damage * attackerBody.critMultiplier : damageInfo.damage;
-                        float damageFraction = damage / attackerBody.damage;
-                        if (damageFraction > 0f)
-                        {
-                            int hits = Convert.ToInt32(Math.Floor(damageFraction / DrenchedPerforator_Threshold.Value));
-                            int stacksToInflict = (DrenchedPerforator_Stacks.Value + ((itemCount - 1) * DrenchedPerforator_StacksStack.Value)) * hits;
-
-                            if (stacksToInflict > 0)
-                            {
-                                DotController.DotDef dotDef = DotController.GetDotDef(DotController.DotIndex.Fracture);
-                                for (int i = 0; i < stacksToInflict; i++)
-                                {
-                                    DotController.InflictDot(victimObject, damageInfo.attacker, damageInfo.inflictedHurtbox, DotController.DotIndex.Fracture, dotDef.interval);
-                                }
-
-                                CreateExplosion(attackerBody, victimBody.corePosition, DrenchedPerforator_ExplosionRadiusv2.Value, DrenchedPerforator_ExplosionRadiusIncreasev2.Value * (stacksToInflict - 1), damageInfo);
-                            }
-                        }
-                    }
+                    behavior = self.AddItemBehavior<ObserversEyeBehavior>(itemCount);
+                    behavior.activations = ObserversEye_Activations.Value;
+                    behavior.activationsStack = ObserversEye_ActivationsStack.Value;
                 }
+
+                if (behavior)
+                {
+                    behavior.stack = itemCount;
+                }
+
+                if (GetItemCountEffective(self) <= 0 && behavior)
+                {
+                    UnityEngine.Object.Destroy(self.GetComponent<ObserversEyeBehavior>());
+                }
+            };
+
+            // Equipment multi trigger
+            On.RoR2.EquipmentSlot.OnEquipmentExecuted_byte_byte_EquipmentIndex += (orig, self, slot, set, index) =>
+            {
+                orig(self, slot, set, index);
+
+                ObserversEyeBehavior behavior = self.GetComponent<ObserversEyeBehavior>();
+
+                if (behavior)
+                {
+                    behavior.AddToQueue(new Tuple<EquipmentSlot, EquipmentIndex>(self, index));
+                }
+            };
+
+            // Cooldown increase
+            On.RoR2.Inventory.CalculateEquipmentCooldownScale += (orig, self) =>
+            {
+                float result = orig(self);
+
+                if (self.GetItemCountEffective(ItemIndex) > 0)
+                {
+                    result = Mathf.Pow(ObserversEye_EquipCooldownMult.Value, self.GetItemCountEffective(ItemIndex));
+                }
+
+                return result;
+            };
+
+            // Increase limit for deployable equipment
+            On.RoR2.CharacterMaster.GetDeployableSameSlotLimit += (orig, self, slot) =>
+            {
+                switch (slot)
+                {
+                    case DeployableSlot.DeathProjectile:
+                        return 999;
+                    case DeployableSlot.GummyClone:
+                        return 999;
+                    case DeployableSlot.VendingMachine:
+                        return 999;
+                }
+
+                return orig(self, slot);
             };
         }
 
         // Recipe
         public override void AddCorruptionRecipe()
         {
-            if (DrenchedPerforator_Recipe.Value == true && ItemInit.HydraTooth.Enabled)
+            if (ObserversEye_Recipe.Value == true)
             {
                 ItemInit.MakeCorruptionRecipe
                 (
-                    DrenchedPerforator_Ingredient1.Value,
-                    DrenchedPerforator_Ingredient2.Value,
-                    ItemDef.name
-                );
-
-                ItemInit.MakeCorruptionRecipe
-                (
-                    DrenchedPerforator_Ingredient1Alt.Value,
-                    DrenchedPerforator_Ingredient2.Value,
+                    ObserversEye_Ingredient1.Value,
+                    ObserversEye_Ingredient2.Value,
                     ItemDef.name
                 );
             }
@@ -489,66 +440,69 @@ namespace Nautilus.Items
 
             return rules;
         }
+    }
 
-        public void CreateExplosion(CharacterBody attackerBody, Vector3 position, float radius, float extraRadius, DamageInfo origDamageInfo)
+    public class ObserversEyeBehavior : CharacterBody.ItemBehavior
+    {
+        public int activations = 2;
+        public int activationsStack = 2;
+        public float equipInterval = 0.5f;
+        public float bfgInterval = 2.2f;
+        public float equipTimer = 0f;
+        public List<Tuple<EquipmentSlot, EquipmentIndex>> equipQueue = new();
+
+        public void AddToQueue(Tuple<EquipmentSlot, EquipmentIndex> tuple)
         {
-            List<Collider> colliders = Physics.OverlapSphere(position, radius + extraRadius).ToList();
-            Util.ShuffleList(colliders);
+            int timesToAdd = activations + (activationsStack * (stack - 1));
 
-            foreach(Collider collider in colliders)
+            for (int i = 0; i < timesToAdd; i++)
             {
-                GameObject gameObject = collider.gameObject;
-                if (gameObject.GetComponentInChildren<CharacterBody>())
+                equipQueue.Add(tuple);
+            }
+        }
+
+        void FixedUpdate()
+        {
+            if (equipQueue.Count > 0)
+            {
+                equipTimer += Time.fixedDeltaTime;
+                
+                if (equipQueue.First().Item2 == RoR2Content.Equipment.BFG.equipmentIndex)
                 {
-                    CharacterBody colliderBody = gameObject.GetComponentInChildren<CharacterBody>();
-                    if (colliderBody && colliderBody.teamComponent && colliderBody.teamComponent.teamIndex != attackerBody.teamComponent.teamIndex)
+                    if (equipTimer > bfgInterval)
                     {
-                        EffectData effectData = new EffectData()
+                        var pair = equipQueue.First();
+                        if (equipQueue.Count >= 1)
                         {
-                            origin = colliderBody.corePosition
-                        };
-                        EffectManager.SpawnEffect(individualExplodePrefab, effectData, true);
+                            Transform transform = pair.Item1.FindActiveEquipmentDisplay();
+                            if ((bool)transform)
+                            {
+                                Animator componentInChildren = transform.GetComponentInChildren<Animator>();
+                                if ((bool)componentInChildren)
+                                {
+                                    componentInChildren.SetTrigger("Fire");
+                                }
+                            }
+                        }
+
+                        pair.Item1.PerformEquipmentAction(EquipmentCatalog.GetEquipmentDef(pair.Item2));
+                        equipQueue.RemoveAt(0);
+
+                        equipTimer = 0f;
+                    }
+                }
+                else
+                {
+                    if (equipTimer > equipInterval)
+                    {
+                        var pair = equipQueue.First();
+                        pair.Item1.PerformEquipmentAction(EquipmentCatalog.GetEquipmentDef(pair.Item2));
+                        equipQueue.RemoveAt(0);
+
+                        equipTimer = 0f;
                     }
                 }
             }
-
-            origDamageInfo.procChainMask.AddModdedProc(DrenchedPerforatorProcType);
-
-            BlastAttack blastAttack = new BlastAttack
-            {
-                position = position,
-                baseDamage = attackerBody.damage * DrenchedPerforator_ExplosionDamage.Value,
-                baseForce = 0f,
-                radius = radius + extraRadius,
-                attacker = attackerBody.gameObject,
-                inflictor = null,
-                teamIndex = attackerBody.teamComponent.teamIndex,
-                crit = origDamageInfo.crit,
-                procChainMask = origDamageInfo.procChainMask,
-                procCoefficient = DrenchedPerforator_ExplosionProcCoefficient.Value,
-                damageColorIndex = DamageColorIndex.Void,
-                falloffModel = BlastAttack.FalloffModel.None,
-                damageType = DamageType.AOE,
-                attackerFiltering = AttackerFiltering.NeverHitSelf
-            };
-            blastAttack.Fire();
-
-            float extraEffectSize = 0f;
-            if (extraRadius > 0f)
-            {
-                extraEffectSize = extraRadius / radius;
-            }
-            else
-            {
-                extraEffectSize = 0f;
-            }
-
-            EffectData effectData2 = new EffectData()
-            {
-                origin = position,
-                scale = (1f + extraEffectSize) * 12f
-            };
-            EffectManager.SpawnEffect(explodePrefab, effectData2, true);
         }
     }
 }
