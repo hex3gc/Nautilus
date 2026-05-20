@@ -16,7 +16,7 @@ namespace Nautilus.Items
         public static ViscousPot ViscousPot = new ViscousPot
         (
             "ViscousPot",
-            [ItemTag.Healing, ItemTag.Damage],
+            [ItemTag.Healing, ItemTag.Damage, ItemTag.CanBeTemporary],
             ItemTier.VoidTier2
         );
     }

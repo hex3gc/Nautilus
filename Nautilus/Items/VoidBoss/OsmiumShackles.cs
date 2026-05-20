@@ -13,7 +13,7 @@ namespace Nautilus.Items
         public static OsmiumShackles OsmiumShackles = new OsmiumShackles
         (
             "OsmiumShackles",
-            [ItemTag.Damage],
+            [ItemTag.Damage, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }

@@ -12,9 +12,9 @@ namespace Nautilus.Items
 {
     public static partial class ItemInit
     {
-        public static ApathyCoreHidden ApathyCoreHidden = new ApathyCoreHidden
+        public static ProtonPopConsumed ProtonPopConsumed = new ProtonPopConsumed
         (
-            "ApathyCoreHidden",
+            "ProtonPopConsumed",
             [ItemTag.CannotCopy, ItemTag.CannotDuplicate, ItemTag.CannotSteal, ItemTag.AIBlacklist],
             ItemTier.NoTier
         );
@@ -23,14 +23,14 @@ namespace Nautilus.Items
     /// <summary>
     ///     // Ver.1
     /// </summary>
-    public class ApathyCoreHidden : ItemBase
+    public class ProtonPopConsumed : ItemBase
     {
-        public override bool Enabled => ApathyCore.ApathyCore_Enabled.Value;
+        public override bool Enabled => ProtonPop.ProtonPop_Enabled.Value;
         public override ItemDef ConversionItemDef => null;
         public override GameObject itemPrefab => null;
-        public override Sprite itemIcon => Main.Assets.LoadAsset<Sprite>("Assets/icons/paleStarConsumed.png");
+        public override Sprite itemIcon => Main.Assets.LoadAsset<Sprite>("Assets/icons/protonPopConsumed.png");
 
-        public ApathyCoreHidden(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = true, bool _hidden = true) :
+        public ProtonPopConsumed(string _name, ItemTag[] _tags, ItemTier _tier, bool _canRemove = true, bool _isConsumed = true, bool _hidden = false) :
         base(_name, _tags, _tier, _canRemove, _isConsumed, _hidden)
         { }
 

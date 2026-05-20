@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static VoidWatch VoidWatch = new VoidWatch
         (
             "VoidWatch",
-            [ItemTag.Damage],
+            [ItemTag.Damage, ItemTag.CanBeTemporary],
             ItemTier.VoidTier1
         );
     }
@@ -50,53 +50,6 @@ namespace Nautilus.Items
             "Should this item appear in runs?",
             true
         );
-        /*
-        public static ConfigItem<float> VoidWatch_Damage = new ConfigItem<float>
-        (
-            "Void common: Collectors Appraisal",
-            "Damage boost",
-            "Grants a damage boost with this multiplier.",
-            0.10f,
-            0f,
-            1f,
-            0.05f
-        );
-        public static ConfigItem<float> VoidWatch_DamageStack = new ConfigItem<float>
-        (
-            "Void common: Collectors Appraisal",
-            "Damage boost (Per stack)",
-            "Grants a damage boost with this multiplier per additional stack.",
-            0.10f,
-            0f,
-            1f,
-            0.05f
-        );
-        public static ConfigItem<float> VoidWatch_HealthThreshold = new ConfigItem<float>
-        (
-            "Void common: Collectors Appraisal",
-            "Damage health threshold",
-            "Health must be above this fraction for the damage boost to apply.",
-            0.9f,
-            0f,
-            1f,
-            0.05f
-        );
-        public static ConfigItem<bool> VoidWatch_BarrierMult = new ConfigItem<bool>
-        (
-            "Void common: Collectors Appraisal",
-            "Damage scaling with barrier",
-            "Adds up to 2x multiplier to the damage bonus scaling with barrier.",
-            true
-        );
-        public static ConfigItem<bool> VoidWatch_HideBuff = new ConfigItem<bool>
-        (
-            "Void common: Collectors Appraisal",
-            "Hide buff",
-            "Do not display the buff for this item.",
-            false
-        );
-        */
-
         public static ConfigItem<float> VoidWatch_Damagev2 = new ConfigItem<float>
         (
             "Void common: Collectors Appraisal",
@@ -126,6 +79,13 @@ namespace Nautilus.Items
             1f,
             24f,
             1f
+        );
+        public static ConfigItem<bool> VoidWatch_Combat = new ConfigItem<bool>
+        (
+            "Void common: Collectors Appraisal",
+            "Only work out of danger",
+            "Enable to make the item use 'out of combat', which applies when the player hasn't attacked enemies, instead of 'out of danger'.",
+            false
         );
         public static ConfigItem<bool> VoidWatch_Recipe = new ConfigItem<bool>
         (
@@ -168,6 +128,8 @@ namespace Nautilus.Items
         public override void FormatDescriptionTokens()
         {
             string descriptionToken = ItemDef.descriptionToken;
+            string pickupToken = ItemDef.pickupToken;
+            string combatDanger = VoidWatch_Combat.Value == true ? "combat" : "danger";
 
             LanguageAPI.AddOverlay
             (
@@ -177,7 +139,18 @@ namespace Nautilus.Items
                     Language.currentLanguage.GetLocalizedStringByToken(descriptionToken),
                     VoidWatch_Damagev2.Value * 100f,
                     VoidWatch_DamageStackv2.Value * 100f,
-                    VoidWatch_MaxBuffsv2.Value
+                    VoidWatch_MaxBuffsv2.Value,
+                    combatDanger
+                )
+            );
+
+            LanguageAPI.AddOverlay
+            (
+                pickupToken,
+                String.Format
+                (
+                    Language.currentLanguage.GetLocalizedStringByToken(pickupToken),
+                    combatDanger
                 )
             );
         }
@@ -445,7 +418,7 @@ namespace Nautilus.Items
         public void CreateVoidWatchBuff()
         {
             BuffDef voidWatchBuff = ScriptableObject.CreateInstance<BuffDef>();
-            voidWatchBuff.buffColor = new Color(0.76f, 0.3f, 0.92f);
+            voidWatchBuff.buffColor = new Color(1f, 1f, 1f);
             voidWatchBuff.canStack = true;
             voidWatchBuff.isDebuff = false;
             voidWatchBuff.ignoreGrowthNectar = false;
@@ -470,7 +443,7 @@ namespace Nautilus.Items
                 
                 int buffCount = body.GetBuffCount(buffIndex);
 
-                if (buffTimer >= buffInterval && body.outOfDanger && buffCount < VoidWatch_MaxBuffsv2.Value)
+                if (buffTimer >= buffInterval && buffCount < VoidWatch_MaxBuffsv2.Value && (VoidWatch.VoidWatch_Combat.Value == false && body.outOfDanger) || (VoidWatch.VoidWatch_Combat.Value == true && body.outOfCombat))
                 {
                     if (buffCount == VoidWatch_MaxBuffsv2.Value - 1)
                     {

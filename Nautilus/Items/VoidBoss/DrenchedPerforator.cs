@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static DrenchedPerforator DrenchedPerforator = new DrenchedPerforator
         (
             "DrenchedPerforator",
-            [ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.ExtractorUnitBlacklist, ItemTag.BrotherBlacklist],
+            [ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.ExtractorUnitBlacklist, ItemTag.BrotherBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }

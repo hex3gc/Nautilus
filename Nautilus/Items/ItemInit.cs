@@ -57,7 +57,7 @@ namespace Nautilus.Items
             "Vanilla: Safer Spaces",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "BleedOnHitVoid"
+            "PreModernRations"
         );
 
         // Encrusted Key
@@ -126,7 +126,7 @@ namespace Nautilus.Items
             "Vanilla: Needletick",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "Crabsinthe"
+            "CoralCrust"
         );
 
         // Lysate Cell
@@ -218,7 +218,7 @@ namespace Nautilus.Items
             "Vanilla: Voidsent Flame",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "VoidWatch"
+            "ProtonPop"
         );
 
         // Singularity Band
@@ -271,7 +271,7 @@ namespace Nautilus.Items
             "Vanilla: Plasma Shrimp",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "BearVoid"
+            "VoidWatch"
         );
 
         // Benthic Bloom

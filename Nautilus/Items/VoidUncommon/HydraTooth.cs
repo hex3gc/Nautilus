@@ -16,7 +16,7 @@ namespace Nautilus.Items
         public static HydraTooth HydraTooth = new HydraTooth
         (
             "HydraTooth",
-            [ItemTag.Damage],
+            [ItemTag.Damage, ItemTag.CanBeTemporary],
             ItemTier.VoidTier2
         );
     }

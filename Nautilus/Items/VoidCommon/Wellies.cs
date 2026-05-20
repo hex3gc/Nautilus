@@ -13,7 +13,7 @@ namespace Nautilus.Items
         public static Wellies Wellies = new Wellies
         (
             "Wellies",
-            [ItemTag.Utility],
+            [ItemTag.Utility, ItemTag.CanBeTemporary],
             ItemTier.VoidTier1
         );
     }

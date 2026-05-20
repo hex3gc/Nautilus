@@ -17,7 +17,7 @@ namespace Nautilus.Items
         public static DeepVoidSignal DeepVoidSignal = new DeepVoidSignal
         (
             "DeepVoidSignal",
-            [ItemTag.Utility, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist],
+            [ItemTag.Utility, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -136,7 +136,7 @@ namespace Nautilus.Items
             "Void boss: Deep Void Signal",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "PaleStar"
+            "EffigyOfPride"
         );
 
         public GameObject OverwritePrefabMaterials()

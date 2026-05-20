@@ -13,7 +13,7 @@ namespace Nautilus.Items
         public static Crabsinthe Crabsinthe = new Crabsinthe
         (
             "Crabsinthe",
-            [ItemTag.Healing],
+            [ItemTag.Healing, ItemTag.CanBeTemporary],
             ItemTier.VoidTier1
         );
     }
