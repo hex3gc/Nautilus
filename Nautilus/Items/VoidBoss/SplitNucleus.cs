@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static SplitNucleus SplitNucleus = new SplitNucleus
         (
             "SplitNucleus",
-            [ItemTag.Utility],
+            [ItemTag.Utility, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -472,7 +472,7 @@ namespace Nautilus.Items
         public void CreateNucleusBuff()
         {
             BuffDef nucleusBuff = ScriptableObject.CreateInstance<BuffDef>();
-            nucleusBuff.buffColor = new Color(1f, 0.772f, 0.396f);
+            nucleusBuff.buffColor = new Color(1f, 1f, 1f);
             nucleusBuff.canStack = true;
             nucleusBuff.isDebuff = false;
             nucleusBuff.ignoreGrowthNectar = true;

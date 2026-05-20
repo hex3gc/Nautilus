@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static RebelSoul RebelSoul = new RebelSoul
         (
             "RebelSoul",
-            [ItemTag.Utility, ItemTag.Healing, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.ExtractorUnitBlacklist],
+            [ItemTag.Utility, ItemTag.Healing, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.ExtractorUnitBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }

@@ -16,7 +16,7 @@ namespace Nautilus.Items
         public static ApathyCore ApathyCore = new ApathyCore
         (
             "ApathyCore",
-            [ItemTag.Damage, ItemTag.Healing, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist],
+            [ItemTag.Damage, ItemTag.Healing, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -551,7 +551,7 @@ namespace Nautilus.Items
         public void CreateApathyBuff()
         {
             BuffDef apathyBuff = ScriptableObject.CreateInstance<BuffDef>();
-            apathyBuff.buffColor = new Color(1f, 0.282f, 0.392f);
+            apathyBuff.buffColor = new Color(1f, 1f, 1f);
             apathyBuff.canStack = true;
             apathyBuff.isDebuff = false;
             apathyBuff.ignoreGrowthNectar = false;
@@ -567,7 +567,7 @@ namespace Nautilus.Items
         public void CreateApathyBuffTemp()
         {
             BuffDef apathyBuffTemp = ScriptableObject.CreateInstance<BuffDef>();
-            apathyBuffTemp.buffColor = new Color(1f, 0.282f, 0.392f);
+            apathyBuffTemp.buffColor = new Color(1f, 1f, 1f);
             apathyBuffTemp.canStack = true;
             apathyBuffTemp.isDebuff = false;
             apathyBuffTemp.ignoreGrowthNectar = false;

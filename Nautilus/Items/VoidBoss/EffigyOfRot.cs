@@ -16,7 +16,7 @@ namespace Nautilus.Items
         public static EffigyOfRot EffigyOfRot = new EffigyOfRot
         (
             "EffigyOfRot",
-            [ItemTag.Healing, ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.ExtractorUnitBlacklist],
+            [ItemTag.Healing, ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.ExtractorUnitBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }

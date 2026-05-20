@@ -17,7 +17,7 @@ namespace Nautilus.Items
         public static MobiusNode MobiusNode = new MobiusNode
         (
             "MobiusNode",
-            [ItemTag.Healing],
+            [ItemTag.Healing, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -506,7 +506,7 @@ namespace Nautilus.Items
         public void CreateMobiusBuff()
         {
             BuffDef mobiusBuff = ScriptableObject.CreateInstance<BuffDef>();
-            mobiusBuff.buffColor = new Color(0.29f, 0f, 0.38f);
+            mobiusBuff.buffColor = new Color(1f, 1f, 1f);
             mobiusBuff.canStack = true;
             mobiusBuff.isDebuff = false;
             mobiusBuff.ignoreGrowthNectar = true;

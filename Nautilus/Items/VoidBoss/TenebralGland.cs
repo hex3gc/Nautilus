@@ -14,7 +14,7 @@ namespace Nautilus.Items
         public static TenebralGland TenebralGland = new TenebralGland
         (
             "TenebralGland",
-            [ItemTag.Damage],
+            [ItemTag.Damage, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -147,7 +147,7 @@ namespace Nautilus.Items
             "Void boss: Tenebral Gland",
             "Recipe ingredient 2",
             "Second ingredient for corruption recipe",
-            "EquipmentMagazineVoid"
+            "Dreadleech"
         );
 
 
@@ -489,7 +489,7 @@ namespace Nautilus.Items
         public void CreateTenebralBuff()
         {
             BuffDef tenebralBuff = ScriptableObject.CreateInstance<BuffDef>();
-            tenebralBuff.buffColor = new Color(0f, 0f, 0f);
+            tenebralBuff.buffColor = new Color(1f, 1f, 1f);
             tenebralBuff.canStack = true;
             tenebralBuff.isDebuff = false;
             tenebralBuff.ignoreGrowthNectar = false;

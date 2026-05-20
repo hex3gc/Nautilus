@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static PaleStar PaleStar = new PaleStar
         (
             "PaleStar",
-            [ItemTag.Utility, ItemTag.ExtractorUnitBlacklist, ItemTag.AIBlacklist],
+            [ItemTag.Utility, ItemTag.ExtractorUnitBlacklist, ItemTag.AIBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidTier2
         );
     }

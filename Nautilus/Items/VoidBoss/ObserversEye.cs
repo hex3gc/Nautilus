@@ -15,7 +15,7 @@ namespace Nautilus.Items
         public static ObserversEye ObserversEye = new ObserversEye
         (
             "ObserversEye",
-            [ItemTag.Utility, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist],
+            [ItemTag.Utility, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist, ItemTag.CannotSteal, ItemTag.ExtractorUnitBlacklist, ItemTag.CanBeTemporary],
             ItemTier.VoidBoss
         );
     }
@@ -124,6 +124,36 @@ namespace Nautilus.Items
             "Second ingredient for corruption recipe",
             "EquipmentMagazineVoid"
         );
+        public static ConfigItem<int> ObserversEye_DeployablesFMP = new ConfigItem<int>
+        (
+            "Void boss: Observers Optics",
+            "Deployable limit (Forgive Me Please)",
+            "Maximum number of Forgive Me Please deployable at a time. Vanilla = 3",
+            10,
+            1f,
+            20f,
+            1f
+        );
+        public static ConfigItem<int> ObserversEye_DeployablesGummy = new ConfigItem<int>
+        (
+            "Void boss: Observers Optics",
+            "Deployable limit (Goobo Jr)",
+            "Maximum number of Goobo Jr. deployable at a time. Vanilla = 3",
+            10,
+            1f,
+            20f,
+            1f
+        );
+        public static ConfigItem<int> ObserversEye_DeployablesVending = new ConfigItem<int>
+        (
+            "Void boss: Observers Optics",
+            "Deployable limit (Remote Caffeinator)",
+            "Maximum number of Remote Caffeinators deployable at a time. Vanilla = 1",
+            10,
+            1f,
+            20f,
+            1f
+        );
 
         public GameObject OverwritePrefabMaterials()
         {
@@ -222,11 +252,11 @@ namespace Nautilus.Items
                 switch (slot)
                 {
                     case DeployableSlot.DeathProjectile:
-                        return 999;
+                        return ObserversEye_DeployablesFMP.Value;
                     case DeployableSlot.GummyClone:
-                        return 999;
+                        return ObserversEye_DeployablesGummy.Value;
                     case DeployableSlot.VendingMachine:
-                        return 999;
+                        return ObserversEye_DeployablesVending.Value;
                 }
 
                 return orig(self, slot);
