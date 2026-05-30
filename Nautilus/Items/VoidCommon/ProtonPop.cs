@@ -146,6 +146,12 @@ namespace Nautilus.Items
             // Add/remove Proton Pop trackers on inventory change
             On.RoR2.Inventory.GiveItemPermanent_ItemIndex_int += (orig, self, itemIndex, count) =>
             {
+                if (!Run.instance || !Run.instance.gameObject)
+                {
+                    orig(self, itemIndex, count);
+                    return;
+                }
+
                 ProtonPopTrackingBehavior behavior = Run.instance.gameObject.GetComponent<ProtonPopTrackingBehavior>();
                 int pops = 0;
                 int popsAfter = 0;

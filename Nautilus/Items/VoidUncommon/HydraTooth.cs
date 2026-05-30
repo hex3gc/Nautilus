@@ -132,6 +132,16 @@ namespace Nautilus.Items
             4f,
             0.01f
         );
+        public static ConfigItem<float> HydraTooth_ExplosionVisualScale = new ConfigItem<float>
+        (
+            "Void uncommon: Tooth Of Hydra",
+            "Explosion visuals scale",
+            "Multiplier for the visual size of the explosion. Set below 1 to make it smaller and less intrusive.",
+            1f,
+            0f,
+            1f,
+            0.05f
+        );
         public static ConfigItem<bool> HydraTooth_Recipe = new ConfigItem<bool>
         (
             "Void uncommon: Tooth Of Hydra",
@@ -265,7 +275,7 @@ namespace Nautilus.Items
                         EffectData effectData = new EffectData
                         {
                             origin = damageInfo.position,
-                            scale = scaleProportion * 8
+                            scale = (scaleProportion * 8f) * HydraTooth_ExplosionVisualScale.Value
                         };
                         EffectManager.SpawnEffect(explodePrefab, effectData, true);
                     }
@@ -479,21 +489,6 @@ namespace Nautilus.Items
             #endregion
 
             return rules;
-        }
-
-        public int GetToothsInTeam(TeamIndex teamIndex)
-        {
-            int ret = 0;
-
-            foreach (TeamComponent teamComponent in TeamComponent.GetTeamMembers(teamIndex))
-            {
-                if (teamComponent.body)
-                {
-                    ret += GetItemCountEffective(teamComponent.body);
-                }
-            }
-
-            return ret;
         }
     }
 

@@ -80,6 +80,26 @@ namespace Nautilus.Items
             0.99f,
             0.01f
         );
+        public static ConfigItem<float> CoralCrust_DamageThreshold = new ConfigItem<float>
+        (
+            "Void common: Coral Crust",
+            "Max HP fraction required before damage is blocked",
+            "An instance of damage must be greater or equal to this fraction of your Max HP before it is blocked by Coral Crust. This prevents your charges from being used on chip damage.",
+            0.04f,
+            0f,
+            0.99f,
+            0.01f
+        );
+        public static ConfigItem<float> CoralCrust_ProcThreshold = new ConfigItem<float>
+        (
+            "Void common: Coral Crust",
+            "Proc coefficient required before damage is blocked",
+            "Damage must have a proc coefficient greater or equal to this before it is blocked by Coral Crust. This prevents your charges from being used on chip damage.",
+            0f,
+            0f,
+            1f,
+            0.01f
+        );
         public static ConfigItem<bool> CoralCrust_Recipe = new ConfigItem<bool>
         (
             "Void common: Coral Crust",
@@ -178,7 +198,7 @@ namespace Nautilus.Items
             // Taking damage from a boss
             On.RoR2.HealthComponent.TakeDamageProcess += (orig, self, damageInfo) =>
             {
-                if (damageInfo.attacker && self.body && !damageInfo.rejected && damageInfo.procCoefficient > 0f)
+                if (damageInfo.attacker && self.body && !damageInfo.rejected && damageInfo.procCoefficient >= CoralCrust_ProcThreshold.Value && damageInfo.damage >= (self.body.maxHealth * CoralCrust_DamageThreshold.Value))
                 {
                     CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     CoralCrustBehavior coralCrustBehavior = self.body.GetComponent<CoralCrustBehavior>();

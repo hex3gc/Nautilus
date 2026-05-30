@@ -231,7 +231,7 @@ namespace Nautilus.Items
                 {
                     self.attackSpeedTotalMult -= OsmiumShackles_DebuffPercent.Value;
                     self.moveSpeedTotalMult -= OsmiumShackles_DebuffPercent.Value;
-                    self.allSkills.cooldownMultiplier *= -OsmiumShackles_DebuffPercent.Value;
+                    self.allSkills.cooldownMultAdd += OsmiumShackles_DebuffPercent.Value;
                 }
             };
 
@@ -526,6 +526,7 @@ namespace Nautilus.Items
                         if (colliderBody && colliderBody.teamComponent && colliderBody.teamComponent.teamIndex != characterBody.teamComponent.teamIndex)
                         {
                             colliderBody.AddTimedBuff(ItemInit.OsmiumShackles.OsmiumBuff, 1f);
+                            colliderBody.RecalculateStats();
 
                             ModelLocator modelLocator = colliderBody.gameObject.GetComponent<ModelLocator>();
                             if (modelLocator && modelLocator.modelTransform && modelLocator.modelTransform.GetComponentInParent<CharacterModel>())
