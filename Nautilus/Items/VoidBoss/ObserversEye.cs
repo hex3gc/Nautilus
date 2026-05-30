@@ -240,7 +240,7 @@ namespace Nautilus.Items
 
                 if (self.GetItemCountEffective(ItemIndex) > 0)
                 {
-                    result = Mathf.Pow(ObserversEye_EquipCooldownMult.Value, self.GetItemCountEffective(ItemIndex));
+                    result *= Mathf.Pow(ObserversEye_EquipCooldownMult.Value, self.GetItemCountEffective(ItemIndex));
                 }
 
                 return result;

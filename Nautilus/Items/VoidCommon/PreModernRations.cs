@@ -59,7 +59,7 @@ namespace Nautilus.Items
             "Void common: Pre Modern Rations",
             "Barrier on equipment activation",
             "Flat barrier gained on equipment activation.",
-            100f,
+            120f,
             1f,
             240f,
             1f
@@ -122,14 +122,19 @@ namespace Nautilus.Items
         public override void RegisterHooks()
         {
             // Equipment barrier trigger
-            On.RoR2.EquipmentSlot.OnEquipmentExecuted_byte_byte_EquipmentIndex += (orig, self, slot, set, index) =>
+            On.RoR2.EquipmentSlot.PerformEquipmentAction += (orig, self, equipmentDef) =>
             {
-                orig(self, slot, set, index);
+                if (self.equipmentDisabled)
+                {
+                    return false;
+                }
 
                 if (self.characterBody && self.characterBody.healthComponent && GetItemCountEffective(self.characterBody) > 0)
                 {
                     self.characterBody.healthComponent.AddBarrier(PreModernRations_Barrier.Value);
                 }
+
+                return orig(self, equipmentDef);
             };
 
             // Cooldown decrease
@@ -139,7 +144,7 @@ namespace Nautilus.Items
 
                 if (self.GetItemCountEffective(ItemIndex) > 0)
                 {
-                    result = Mathf.Pow(PreModernRations_CooldownMultiplier.Value, self.GetItemCountEffective(ItemIndex));
+                    result *= Mathf.Pow(PreModernRations_CooldownMultiplier.Value, self.GetItemCountEffective(ItemIndex));
                 }
 
                 return result;

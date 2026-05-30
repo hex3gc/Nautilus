@@ -164,6 +164,16 @@ namespace Nautilus.Items
             1f,
             0.05f
         );
+        public static ConfigItem<float> DrenchedPerforator_ExplosionVisualScale = new ConfigItem<float>
+        (
+            "Void boss: Drenched Perforator",
+            "Explosion visual scale",
+            "Multiplier for the visual size of the explosion. Set below 1 to make it smaller and less intrusive.",
+            1f,
+            0f,
+            1f,
+            0.05f
+        );
         public static ConfigItem<bool> DrenchedPerforator_Recipe = new ConfigItem<bool>
         (
             "Void boss: Drenched Perforator",
@@ -546,7 +556,7 @@ namespace Nautilus.Items
             EffectData effectData2 = new EffectData()
             {
                 origin = position,
-                scale = (1f + extraEffectSize) * 12f
+                scale = ((1f + extraEffectSize) * 10f) * DrenchedPerforator_ExplosionVisualScale.Value
             };
             EffectManager.SpawnEffect(explodePrefab, effectData2, true);
         }
